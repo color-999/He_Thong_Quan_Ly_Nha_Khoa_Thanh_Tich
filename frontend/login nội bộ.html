@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng nhập Nội bộ - Nha Khoa Thành Tích</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#bfc7d2",
+            "secondary-fixed": "#89f5e7",
+            "surface-variant": "#d8e3fb",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#004b73",
+            "on-tertiary-container": "#fcfcff",
+            "on-primary-fixed": "#001d31",
+            "inverse-primary": "#93ccff",
+            "surface-bright": "#f9f9ff",
+            "on-surface": "#111c2d",
+            "tertiary": "#006387",
+            "outline": "#707881",
+            "on-secondary-fixed-variant": "#005049",
+            "tertiary-fixed": "#c4e7ff",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-container-highest": "#d8e3fb",
+            "tertiary-container": "#007da9",
+            "surface-dim": "#cfdaf2",
+            "surface-container-high": "#dee8ff",
+            "primary-fixed": "#cce5ff",
+            "secondary-fixed-dim": "#6bd8cb",
+            "primary-container": "#007bb9",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#3f4850",
+            "on-tertiary-fixed-variant": "#004c69",
+            "surface": "#f9f9ff",
+            "secondary-container": "#86f2e4",
+            "on-tertiary-fixed": "#001e2c",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#fdfcff",
+            "on-background": "#111c2d",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#93ccff",
+            "on-secondary-fixed": "#00201d",
+            "inverse-surface": "#263143",
+            "surface-container": "#e7eeff",
+            "secondary": "#006a61",
+            "surface-container-low": "#f0f3ff",
+            "on-secondary-container": "#006f66",
+            "surface-tint": "#006398",
+            "background": "#f9f9ff",
+            "tertiary-fixed-dim": "#7bd0ff",
+            "primary": "#006194",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "body-lg": ["Be Vietnam Pro"],
+            "label-lg": ["Be Vietnam Pro"],
+            "headline-md": ["Be Vietnam Pro"],
+            "display-lg": ["Be Vietnam Pro"],
+            "title-md": ["Be Vietnam Pro"],
+            "headline-sm": ["Be Vietnam Pro"],
+            "label-md": ["Be Vietnam Pro"],
+            "body-md": ["Be Vietnam Pro"],
+            "headline-lg": ["Be Vietnam Pro"],
+            "label-sm": ["Be Vietnam Pro"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#f0f4f8] font-['Be_Vietnam_Pro'] text-on-surface min-h-screen flex flex-col justify-between selection:bg-secondary-container selection:text-on-secondary-container relative antialiased">
+<!-- Subtle Minimal Top Status Bar -->
+<header class="w-full px-4 sm:px-8 py-3 flex items-center justify-between z-10">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-xs text-on-surface-variant font-medium tracking-wide">Cụm máy chủ EMR Nội bộ: <strong class="text-secondary font-semibold">ONLINE</strong></span>
+</div>
+<a class="inline-flex items-center gap-1.5 text-xs text-on-surface-variant hover:text-primary transition-colors py-1 px-2.5 rounded-md hover:bg-white/60" href="login.html">
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+<span>Cổng bệnh nhân</span>
+</a>
+</header>
+<!-- Centered Login Container -->
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-8 w-full">
+<div class="w-full max-w-[430px] flex flex-col gap-4">
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06),0_2px_6px_-2px_rgba(15,23,42,0.04)] p-8 sm:p-9 relative">
+<!-- Clinic Branding & Title -->
+<div class="flex flex-col items-center text-center mb-7">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary flex items-center justify-center shadow-md mb-3.5">
+<span class="material-symbols-outlined text-[26px]">dentistry</span>
+</div>
+<span class="text-xs font-semibold tracking-wider text-secondary uppercase mb-1">Nha Khoa Thành Tích</span>
+<h1 class="text-xl sm:text-[22px] font-bold text-on-surface tracking-tight">Đăng nhập hệ thống nội bộ</h1>
+<p class="text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">Vui lòng đăng nhập bằng tài khoản nhân viên được cấp</p>
+</div>
+<!-- Alert Notification (Dismissible & Dynamic) -->
+<div class="hidden mb-5 p-3.5 rounded-xl text-xs sm:text-[13px] leading-relaxed transition-all duration-200 flex items-start gap-2.5 border" id="login-alert" role="alert">
+<span class="material-symbols-outlined text-[18px] shrink-0 mt-0.5" id="alert-icon">info</span>
+<div class="flex-1">
+<span class="font-semibold block" id="alert-title"></span>
+<span class="text-inherit opacity-95" id="alert-msg"></span>
+</div>
+<button class="text-current opacity-60 hover:opacity-100 transition-opacity p-0.5" onclick="hideAlert()" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Authentication Form -->
+<form class="space-y-4" id="login-form" novalidate="" onsubmit="handleLoginSubmit(event)">
+<!-- Username / Staff ID -->
+<div class="space-y-1.5">
+<label class="block text-xs font-semibold text-on-surface" for="username">
+              Tên đăng nhập hoặc mã nhân viên
+            </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[19px] pointer-events-none">badge</span>
+<input autocomplete="username" class="w-full pl-10 pr-3.5 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-200 text-on-surface placeholder:text-outline/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-150" id="username" name="username" placeholder="VD: letan_mai hoặc NV-0824" type="text"/>
+</div>
+</div>
+<!-- Password with Toggle -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block text-xs font-semibold text-on-surface" for="password">
+                Mật khẩu
+              </label>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[19px] pointer-events-none">lock</span>
+<input autocomplete="current-password" class="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl bg-slate-50 border border-slate-200 text-on-surface placeholder:text-outline/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-150" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<button aria-label="Hiện hoặc ẩn mật khẩu" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-1 rounded-lg transition-colors" id="toggle-pwd-btn" onclick="togglePasswordVisibility()" title="Hiện/Ẩn mật khẩu" type="button">
+<span class="material-symbols-outlined text-[19px]" id="pwd-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember me & Help Link -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input class="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary/20 focus:ring-offset-0 cursor-pointer accent-primary" id="remember-me" type="checkbox"/>
+<span class="text-xs text-on-surface-variant">Ghi nhớ tài khoản trên máy trạm này</span>
+</label>
+<a class="text-xs text-primary hover:text-primary-container font-medium hover:underline transition-colors shrink-0" href="#" onclick="showHelpModal(); return false;">
+              Hỗ trợ CNTT / Quên mật khẩu?
+            </a>
+</div>
+<!-- Submit Button -->
+<div class="pt-2">
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary hover:bg-[#0073b0] active:bg-[#005785] text-on-primary font-semibold text-sm shadow-[0_2px_8px_rgba(0,97,148,0.25)] hover:shadow-[0_4px_12px_rgba(0,97,148,0.3)] transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer" id="submit-btn" type="submit">
+<span class="material-symbols-outlined text-[19px]">vpn_key</span>
+<span>Đăng nhập</span>
+</button>
+</div>
+</form>
+<!-- Access Restriction Badge -->
+<div class="mt-6 pt-5 border-t border-slate-100 flex items-center justify-center text-center">
+<p class="text-[12px] text-on-surface-variant/90 flex items-center gap-1.5 font-medium">
+<span class="text-slate-400">🔒</span>
+<span>Chỉ dành cho nhân viên được cấp quyền truy cập</span>
+</p>
+</div>
+</div>
+<!-- Discreet Capstone Testing Dropdown (Collapsible) -->
+<div class="w-full">
+<details class="group bg-white/70 hover:bg-white border border-slate-200/70 rounded-xl transition-all shadow-sm">
+<summary class="list-none px-4 py-2.5 flex items-center justify-between cursor-pointer text-xs font-medium text-on-surface-variant hover:text-primary select-none">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-primary">terminal</span>
+<span>Tài khoản kiểm thử đồ án môn học (10 vai trò EMR)</span>
+</span>
+<span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-open:rotate-180 text-slate-400">expand_more</span>
+</summary>
+<div class="p-3 pt-1 border-t border-slate-100 space-y-1.5 text-xs">
+<p class="text-[11px] text-slate-500 mb-2">Nhấp nhanh vào bất kỳ vai trò nào để tự động điền tài khoản mẫu (Mật khẩu: <code class="font-mono bg-slate-100 px-1 py-0.5 rounded text-primary">NhaKhoa@2026</code>):</p>
+<div class="grid grid-cols-2 gap-1.5">
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('letan_mai', 'NhaKhoa@2026', 'Lễ tân (Receptionist)', 'letan-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">1. Lễ tân</span>
+<span class="font-mono text-[10px] text-slate-400">letan_mai</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('thungan_lan', 'NhaKhoa@2026', 'Thu ngân (Cashier)', 'cashier-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">2. Thu ngân</span>
+<span class="font-mono text-[10px] text-slate-400">thungan_lan</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('ketoan_dung', 'NhaKhoa@2026', 'Kế toán (Accountant)', 'accountant-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">3. Kế toán</span>
+<span class="font-mono text-[10px] text-slate-400">ketoan_dung</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('hr_minh', 'NhaKhoa@2026', 'Nhân sự (HR Manager)', 'hr-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">4. Quản lý HR</span>
+<span class="font-mono text-[10px] text-slate-400">hr_minh</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-primary-fixed/30 hover:bg-primary-fixed/60 transition-colors flex items-center justify-between" onclick="fillTestAccount('bs_thanhtich', 'NhaKhoa@2026', 'Bác sĩ chuyên khoa', 'doctor-emr.html')" type="button">
+<span class="font-semibold text-primary">5. Bác sĩ</span>
+<span class="font-mono text-[10px] text-primary">bs_thanhtich</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('troly_an', 'NhaKhoa@2026', 'Trợ lý nha khoa', 'assistant-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">6. Trợ lý nha</span>
+<span class="font-mono text-[10px] text-slate-400">troly_an</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('dieuduong_ha', 'NhaKhoa@2026', 'Điều dưỡng (Nurse)', 'nurse-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">7. Điều dưỡng</span>
+<span class="font-mono text-[10px] text-slate-400">dieuduong_ha</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('ktv_hoang', 'NhaKhoa@2026', 'Kỹ thuật viên Lab', 'lab-dashboard.html')" type="button">
+<span class="font-medium text-slate-700">8. KTV Lab</span>
+<span class="font-mono text-[10px] text-slate-400">ktv_hoang</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-primary-fixed/40 transition-colors flex items-center justify-between" onclick="fillTestAccount('chutich_thanh', 'NhaKhoa@2026', 'Chủ tịch HĐQT', 'executive-kpi.html')" type="button">
+<span class="font-medium text-slate-700">9. Chủ tịch</span>
+<span class="font-mono text-[10px] text-slate-400">chutich_thanh</span>
+</button>
+<button class="text-left px-2.5 py-1.5 rounded-lg bg-primary-fixed/30 hover:bg-primary-fixed/60 transition-colors flex items-center justify-between" onclick="fillTestAccount('admin_sys', 'NhaKhoa@2026', 'Quản trị viên (Admin)', 'admin-system.html')" type="button">
+<span class="font-semibold text-primary">10. Quản trị</span>
+<span class="font-mono text-[10px] text-primary">admin_sys</span>
+</button>
+</div>
+<button class="w-full mt-1.5 text-left px-2.5 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 transition-colors flex items-center justify-between text-error" onclick="fillTestAccount('bs_khoa_lock', 'NhaKhoa@2026', 'Tài khoản tạm khóa', null)" type="button">
+<span class="font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock_person</span>
+<span>Test Case: Tài khoản bị khóa</span>
+</span>
+<span class="font-mono text-[10px]">bs_khoa_lock</span>
+</button>
+</div>
+</details>
+</div>
+</div>
+</main>
+<!-- Clean Minimal Footer -->
+<footer class="w-full py-4 text-center z-10">
+<p class="text-xs text-slate-500 font-normal">
+      © 2026 Nha Khoa Thành Tích • Cổng thông tin nội bộ EMR
+    </p>
+</footer>
+<!-- Logic & Interactions -->
+<script>
+    // System demo credentials database
+    const DEMO_ACCOUNTS = {
+      'letan_mai': { role: 'Lễ tân (Receptionist)', redirect: 'letan-dashboard.html', locked: false },
+      'thungan_lan': { role: 'Thu ngân (Cashier)', redirect: 'cashier-dashboard.html', locked: false },
+      'ketoan_dung': { role: 'Kế toán (Accountant)', redirect: 'accountant-dashboard.html', locked: false },
+      'hr_minh': { role: 'Quản lý nhân sự (HR Manager)', redirect: 'hr-dashboard.html', locked: false },
+      'bs_thanhtich': { role: 'Bác sĩ chuyên khoa (Dentist)', redirect: 'doctor-emr.html', locked: false },
+      'troly_an': { role: 'Trợ lý nha khoa (Assistant)', redirect: 'assistant-dashboard.html', locked: false },
+      'dieuduong_ha': { role: 'Điều dưỡng (Nurse)', redirect: 'nurse-dashboard.html', locked: false },
+      'ktv_hoang': { role: 'Kỹ thuật viên Lab (Technician)', redirect: 'lab-dashboard.html', locked: false },
+      'chutich_thanh': { role: 'Chủ tịch HĐQT (Chairman)', redirect: 'executive-kpi.html', locked: false },
+      'admin_sys': { role: 'Quản trị viên (System Admin)', redirect: 'admin-system.html', locked: false },
+      'bs_khoa_lock': { role: 'Bác sĩ tạm đình chỉ', redirect: null, locked: true }
+    };
+
+    function togglePasswordVisibility() {
+      const pwInput = document.getElementById('password');
+      const pwIcon = document.getElementById('pwd-icon');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        pwIcon.textContent = 'visibility_off';
+      } else {
+        pwInput.type = 'password';
+        pwIcon.textContent = 'visibility';
+      }
+    }
+
+    function showAlert(type, title, message) {
+      const box = document.getElementById('login-alert');
+      const icon = document.getElementById('alert-icon');
+      const t = document.getElementById('alert-title');
+      const m = document.getElementById('alert-msg');
+
+      box.className = 'mb-5 p-3.5 rounded-xl text-xs sm:text-[13px] leading-relaxed transition-all duration-200 flex items-start gap-2.5 border';
+
+      if (type === 'error') {
+        box.classList.add('bg-red-50', 'text-red-800', 'border-red-200');
+        icon.className = 'material-symbols-outlined text-[18px] shrink-0 mt-0.5 text-red-600';
+        icon.textContent = 'error';
+      } else if (type === 'success') {
+        box.classList.add('bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+        icon.className = 'material-symbols-outlined text-[18px] shrink-0 mt-0.5 text-emerald-600';
+        icon.textContent = 'check_circle';
+      } else {
+        box.classList.add('bg-blue-50', 'text-blue-800', 'border-blue-200');
+        icon.className = 'material-symbols-outlined text-[18px] shrink-0 mt-0.5 text-blue-600';
+        icon.textContent = 'info';
+      }
+
+      t.textContent = title;
+      m.textContent = message;
+      box.classList.remove('hidden');
+    }
+
+    function hideAlert() {
+      document.getElementById('login-alert').classList.add('hidden');
+    }
+
+    function fillTestAccount(username, password, roleName, redirect) {
+      document.getElementById('username').value = username;
+      document.getElementById('password').value = password;
+      showAlert('info', 'Đã nạp tài khoản: ' + roleName, 'Mã: ' + username + '. Bấm "Đăng nhập" để kiểm tra phân quyền.');
+      document.getElementById('username').focus();
+    }
+
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      hideAlert();
+
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const submitBtn = document.getElementById('submit-btn');
+
+      const u = usernameInput.value.trim();
+      const p = passwordInput.value;
+
+      // Validation
+      if (!u && !p) {
+        showAlert('error', 'Thiếu thông tin đăng nhập', 'Vui lòng nhập tên đăng nhập và mật khẩu.');
+        usernameInput.focus();
+        return;
+      }
+      if (!u) {
+        showAlert('error', 'Chưa nhập tên đăng nhập', 'Vui lòng điền tên đăng nhập hoặc mã nhân viên.');
+        usernameInput.focus();
+        return;
+      }
+      if (!p) {
+        showAlert('error', 'Chưa nhập mật khẩu', 'Vui lòng nhập mật khẩu xác thực EMR.');
+        passwordInput.focus();
+        return;
+      }
+
+      // Check locked user case specifically
+      if (u === 'bs_khoa_lock' || (DEMO_ACCOUNTS[u] && DEMO_ACCOUNTS[u].locked)) {
+        showAlert(
+          'error', 
+          'Tài khoản bị tạm khóa (Mã: ACC-SUSPENDED-403)', 
+          'Tài khoản này đang bị tạm dừng công tác theo Quyết định Thanh tra nội bộ. Vui lòng liên hệ phòng Tổ chức - Cán bộ hoặc IT Helpdesk (#8812).'
+        );
+        return;
+      }
+
+      // Loading state simulation
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+        <span>Đang xác thực bảo mật...</span>
+      `;
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+        submitBtn.innerHTML = originalHTML;
+
+        // Verification logic
+        const validDemo = DEMO_ACCOUNTS[u];
+        const isDefaultCorrectPassword = (p === 'NhaKhoa@2026' || p.length >= 6);
+
+        if (validDemo && isDefaultCorrectPassword) {
+          showAlert(
+            'success', 
+            'Xác thực thành công!', 
+            `Chào mừng [${validDemo.role}]. Đang kết nối phiên làm việc bảo mật tới cổng lâm sàng...`
+          );
+          // Optional redirect emulation after 1.2s
+          setTimeout(() => {
+            console.log('Redirecting to:', validDemo.redirect);
+          }, 1200);
+        } else if (p.length < 6) {
+          showAlert(
+            'error', 
+            'Mật khẩu không chính xác', 
+            'Mật khẩu không đúng hoặc chưa đủ độ dài an toàn tối thiểu.'
+          );
+          passwordInput.focus();
+        } else {
+          // Generic valid staff login simulation
+          showAlert(
+            'success', 
+            'Đăng nhập thành công!', 
+            `Xác thực cán bộ [${u}] hoàn tất. Đang chuyển tiếp vào bảng điều khiển tác nghiệp...`
+          );
+        }
+      }, 700);
+    }
+
+    function showHelpModal() {
+      showAlert(
+        'info', 
+        'Hỗ trợ CNTT Bệnh viện', 
+        'Để cấp lại mật khẩu hoặc đổi mã PIN xác thực EMR, nhân viên vui lòng liên hệ trực tiếp Bộ phận Kỹ thuật CNTT qua số nội bộ nhánh #8812 hoặc Hotline 028 3838 3838 (Ext 101).'
+      );
+    }
+  </script>
+</body></html>

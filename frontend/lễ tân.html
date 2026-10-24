@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cổng Lễ Tân &amp; Tiếp Đón - Nha Khoa Thành Tích</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#006194",
+            "primary-container": "#007bb9",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#cce5ff",
+            "primary-fixed-dim": "#93ccff",
+            "on-primary-fixed": "#001d31",
+            "on-primary-fixed-variant": "#004b73",
+            "secondary": "#006a61",
+            "secondary-container": "#86f2e4",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#006f66",
+            "tertiary": "#006387",
+            "tertiary-container": "#007da9",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#c4e7ff",
+            "surface": "#f9f9ff",
+            "surface-dim": "#cfdaf2",
+            "surface-bright": "#f9f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f0f3ff",
+            "surface-container": "#e7eeff",
+            "surface-container-high": "#dee8ff",
+            "surface-container-highest": "#d8e3fb",
+            "on-surface": "#111c2d",
+            "on-surface-variant": "#3f4850",
+            "outline": "#707881",
+            "outline-variant": "#bfc7d2",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#263143",
+            "inverse-on-surface": "#ecf1ff"
+          },
+          fontFamily: {
+            sans: ["Be Vietnam Pro", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; height: 100%; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f0f3ff; }
+    ::-webkit-scrollbar-thumb { background: #bfc7d2; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #707881; }
+
+    /* Transitions */
+    .sidebar {
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #mainContent {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* COLLAPSED HORIZONTAL SIDEBAR BEHAVIOR */
+    .app-layout.sidebar-collapsed #sidebar {
+      width: 5rem !important; /* w-20 = 80px */
+    }
+    .app-layout.sidebar-collapsed .logo-expanded {
+      display: none !important;
+    }
+    .app-layout.sidebar-collapsed .menu-label,
+    .app-layout.sidebar-collapsed .group-title,
+    .app-layout.sidebar-collapsed .chevron-btn,
+    .app-layout.sidebar-collapsed .shift-badge-box,
+    .app-layout.sidebar-collapsed .accordion-content {
+      display: none !important;
+    }
+    .app-layout.sidebar-collapsed .sidebar-header {
+      justify-content: center !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+    .app-layout.sidebar-collapsed .nav-item-btn {
+      justify-content: center !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .app-layout.sidebar-collapsed .group-header-collapsed-btn {
+      display: flex !important;
+    }
+
+    /* Floating Flyout Submenu styling */
+    #flyoutSubmenu {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      animation: fadeInScale 0.15s ease-out;
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-surface font-sans text-on-surface antialiased text-[14px]">
+<!-- MAIN APP LAYOUT (Flexbox Container) -->
+<div class="app-layout flex min-h-screen bg-surface" id="appLayout">
+<!-- SIDEBAR -->
+<aside class="sidebar w-64 bg-white border-r border-slate-200 shrink-0 flex flex-col transition-all duration-300 z-30 select-none relative shadow-[2px_0_8px_rgba(0,0,0,0.02)]" id="sidebar">
+<!-- Sidebar Header (Logo Brand) -->
+<div class="sidebar-header h-16 px-4 flex items-center justify-between border-b border-slate-100 flex-shrink-0">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white flex-shrink-0 shadow-sm shadow-primary/30" title="Nha Khoa Thành Tích">
+<span class="material-symbols-outlined text-[24px]">dentistry</span>
+</div>
+<div class="flex flex-col min-w-0 logo-expanded">
+<span class="font-bold text-[15px] text-primary truncate leading-tight tracking-tight">Thành Tích Dental</span>
+<span class="text-[10px] font-semibold text-secondary tracking-wider uppercase truncate">Cổng Tiếp Đón &amp; Lễ Tân</span>
+</div>
+</div>
+</div>
+<!-- Shift Info Badge -->
+<div class="shift-badge-box p-3 pb-1 flex-shrink-0">
+<div class="px-3 py-2 rounded-lg bg-surface-container-low border border-surface-container/70 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-[12px] text-on-surface-variant font-medium">Ca Trực: Sáng &amp; Chiều</span>
+</div>
+<span class="text-[11px] font-bold text-secondary px-1.5 py-0.5 rounded bg-secondary-container/40">Tầng 1</span>
+</div>
+</div>
+<!-- Scrollable Nav Groups -->
+<div class="flex-1 overflow-y-auto px-3 py-2 space-y-2" id="sidebarScrollContainer">
+<!-- GROUP 1: TỔNG QUAN -->
+<div class="nav-group border-b border-slate-100 pb-2">
+<div class="flex items-center justify-between px-2.5 py-1 text-slate-400 font-bold text-[11px] uppercase tracking-wider group-title">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">home</span>
+<span>1. TỔNG QUAN</span>
+</span>
+</div>
+<!-- Collapsed button placeholder -->
+<button class="group-header-collapsed-btn hidden w-full py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 items-center justify-center" onclick="navigateTo('page-dashboard', this)" title="Tổng quan lễ tân" type="button">
+<span class="material-symbols-outlined text-[22px] text-primary">grid_view</span>
+</button>
+<!-- Expanded links -->
+<div class="accordion-content space-y-1 pt-0.5" id="group-content-dashboard">
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-semibold text-[13px] bg-primary text-white shadow-sm shadow-primary/25 transition-all" data-page="page-dashboard" href="javascript:void(0)" onclick="navigateTo('page-dashboard', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">grid_view</span>
+<span class="menu-label truncate">Tổng quan lễ tân</span>
+</a>
+</div>
+</div>
+<!-- GROUP 2: QUẢN LÝ LỊCH (Accordion Independent) -->
+<div class="nav-group border-b border-slate-100 pb-2">
+<div class="flex items-center justify-between px-2.5 py-1 text-slate-400 font-bold text-[11px] uppercase tracking-wider group-title cursor-pointer select-none" onclick="toggleAccordion('group-schedule', 'chevron-schedule')">
+<span class="flex items-center gap-1.5 hover:text-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[15px]">calendar_month</span>
+<span>2. QUẢN LÝ LỊCH</span>
+</span>
+<button class="chevron-btn p-0.5 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-transform duration-200" id="chevron-schedule" title="Thu gọn/Mở rộng nhóm" type="button">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<!-- Collapsed trigger flyout button -->
+<button class="group-header-collapsed-btn hidden w-full py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 items-center justify-center" onclick="showFlyoutMenu('schedule', this, event)" title="Quản lý lịch (Click xem menu con)" type="button">
+<span class="material-symbols-outlined text-[22px] text-slate-700">event_note</span>
+</button>
+<!-- Expanded children -->
+<div class="accordion-content space-y-1 pt-0.5" id="group-schedule">
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-appointments" href="javascript:void(0)" onclick="navigateTo('page-appointments', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">event_note</span>
+<span class="menu-label truncate">Lịch hẹn</span>
+</a>
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-followups" href="javascript:void(0)" onclick="navigateTo('page-followups', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">event_repeat</span>
+<span class="menu-label truncate">Lịch tái khám</span>
+</a>
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-reminders" href="javascript:void(0)" onclick="navigateTo('page-reminders', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">notification_important</span>
+<span class="menu-label truncate">Nhắc lịch &amp; thông báo</span>
+</a>
+</div>
+</div>
+<!-- GROUP 3: QUẢN LÝ BỆNH NHÂN (Accordion Independent) -->
+<div class="nav-group border-b border-slate-100 pb-2">
+<div class="flex items-center justify-between px-2.5 py-1 text-slate-400 font-bold text-[11px] uppercase tracking-wider group-title cursor-pointer select-none" onclick="toggleAccordion('group-patients', 'chevron-patients')">
+<span class="flex items-center gap-1.5 hover:text-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[15px]">group</span>
+<span>3. QUẢN LÝ BỆNH NHÂN</span>
+</span>
+<button class="chevron-btn p-0.5 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-transform duration-200" id="chevron-patients" title="Thu gọn/Mở rộng nhóm" type="button">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<!-- Collapsed trigger flyout button -->
+<button class="group-header-collapsed-btn hidden w-full py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 items-center justify-center" onclick="showFlyoutMenu('patients', this, event)" title="Quản lý bệnh nhân (Click xem menu con)" type="button">
+<span class="material-symbols-outlined text-[22px] text-slate-700">person_search</span>
+</button>
+<!-- Expanded children -->
+<div class="accordion-content space-y-1 pt-0.5" id="group-patients">
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-patients" href="javascript:void(0)" onclick="navigateTo('page-patients', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">person_search</span>
+<span class="menu-label truncate">Danh sách bệnh nhân</span>
+</a>
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-checkin-records" href="javascript:void(0)" onclick="navigateTo('page-checkin-records', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">badge</span>
+<span class="menu-label truncate">Hồ sơ tiếp đón</span>
+</a>
+</div>
+</div>
+<!-- GROUP 4: TÀI KHOẢN -->
+<div class="nav-group pb-2">
+<div class="flex items-center justify-between px-2.5 py-1 text-slate-400 font-bold text-[11px] uppercase tracking-wider group-title cursor-pointer select-none" onclick="toggleAccordion('group-account', 'chevron-account')">
+<span class="flex items-center gap-1.5 hover:text-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[15px]">person</span>
+<span>4. TÀI KHOẢN</span>
+</span>
+<button class="chevron-btn p-0.5 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-transform duration-200" id="chevron-account" title="Thu gọn/Mở rộng nhóm" type="button">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<!-- Collapsed trigger flyout button -->
+<button class="group-header-collapsed-btn hidden w-full py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 items-center justify-center" onclick="navigateTo('page-account-profile', this)" title="Thông tin tài khoản" type="button">
+<span class="material-symbols-outlined text-[22px] text-slate-700">manage_accounts</span>
+</button>
+<!-- Expanded children -->
+<div class="accordion-content space-y-1 pt-0.5" id="group-account">
+<a class="nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all" data-page="page-account-profile" href="javascript:void(0)" onclick="navigateTo('page-account-profile', this)">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">manage_accounts</span>
+<span class="menu-label truncate">Thông tin tài khoản</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Sidebar Bottom: Logout -->
+<div class="p-3 border-t border-slate-100 bg-slate-50/60 flex-shrink-0">
+<button class="nav-item-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-error hover:bg-error-container/40 transition-colors font-medium text-[13px]" onclick="confirmLogout()" title="Đăng xuất ca trực" type="button">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0">logout</span>
+<span class="menu-label font-semibold truncate">Đăng xuất ca trực</span>
+</button>
+</div>
+</aside>
+<!-- MAIN WRAPPER (Topbar + #mainContent) -->
+<div class="flex-1 min-w-0 flex flex-col h-screen overflow-hidden">
+<!-- TOPBAR HEADER (Sticky Top) -->
+<header class="h-16 bg-white/95 backdrop-blur-md border-b border-slate-200 z-20 px-4 md:px-6 flex items-center justify-between gap-4 flex-shrink-0 shadow-xs">
+<!-- Left: Sidebar Toggle Button + Breadcrumb -->
+<div class="flex items-center gap-3 min-w-0">
+<!-- UPDATED TOGGLE BUTTON TO MATCH PREVIOUS STYLE -->
+<button aria-expanded="true" aria-label="Thu gọn hoặc mở rộng thanh bên" class="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-primary transition-all cursor-pointer shadow-xs active:scale-95 flex-shrink-0" id="sidebarToggle" title="Thu gọn thanh điều hướng bên trái" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform duration-300" id="sidebarToggleIcon">keyboard_double_arrow_left</span>
+</button>
+<!-- Breadcrumb & Mode Tag -->
+<div class="flex items-center gap-2 text-[13px] text-slate-500 truncate">
+<span class="font-medium text-slate-500 hidden sm:inline">Cổng tiếp đón</span>
+<span class="material-symbols-outlined text-[14px] text-slate-400 hidden sm:inline">chevron_right</span>
+<span class="text-primary font-bold text-[14px] truncate" id="breadcrumbCurrentPage">Tổng quan lễ tân</span>
+<span class="text-[11px] font-semibold text-secondary px-2 py-0.5 rounded-full bg-secondary-container/40 hidden xl:inline-block truncate">Mô phỏng Frontend (Mock Data / LocalStorage)</span>
+</div>
+</div>
+<!-- Center: Quick Search Input -->
+<div class="flex-1 max-w-md hidden md:block">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-[18px] pointer-events-none">search</span>
+<input class="w-full h-9 pl-9 pr-4 rounded-lg bg-slate-100/80 border border-transparent focus:border-primary/30 focus:bg-white text-slate-900 placeholder:text-slate-400 text-[13px] outline-none transition-all" id="globalSearchInput" oninput="handleGlobalSearch(this.value)" placeholder="Tìm kiếm nhanh BN, số điện thoại, mã lịch #LH-..." type="text"/>
+</div>
+</div>
+<!-- Right: Shift Badge, Notifications, Reception Profile -->
+<div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+<!-- Ca trực badge -->
+<div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant text-[11px] font-semibold border border-primary-fixed">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Ca Trực: Sáng &amp; Chiều • Quầy Lễ Tân Tầng 1</span>
+</div>
+<!-- Notification bell -->
+<button class="relative w-9 h-9 rounded-lg hover:bg-slate-100 text-slate-600 flex items-center justify-center transition-colors" onclick="showToast('Có 3 việc quan trọng cần gọi nhắc lịch ca chiều', 'notifications')" title="3 thông báo mới" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-white text-[10px] font-bold flex items-center justify-center">3</span>
+</button>
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[12px] shadow-xs">
+            TM
+          </div>
+<div class="hidden sm:flex flex-col text-left">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-bold text-[13px] text-slate-800">Đỗ Tuyết Mai</span>
+<span class="px-1.5 py-0.5 rounded bg-secondary-container/50 text-on-secondary-container text-[10px] font-semibold">Lễ tân trưởng</span>
+</div>
+<span class="text-[11px] text-slate-400 mt-1">Mã NV: LT-0012</span>
+</div>
+<button class="p-1 rounded-lg text-slate-400 hover:text-error hover:bg-error-container/30 transition-colors ml-0.5" onclick="confirmLogout()" title="Đăng xuất ca trực" type="button">
+<span class="material-symbols-outlined text-[18px]">power_settings_new</span>
+</button>
+</div>
+</div>
+</header>
+<!-- MAIN CONTENT CONTAINER -->
+<main class="flex-1 min-w-0 overflow-y-auto bg-surface relative" id="mainContent">
+<!-- PAGE 1: TỔNG QUAN LỄ TÂN (DASHBOARD) -->
+<div class="page-view p-4 md:p-6 space-y-6" id="page-dashboard">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant">Quầy Lễ Tân Tầng 1</span>
+<span class="text-slate-400 text-[12px]">• Thứ Ba, 31/03/2026</span>
+</div>
+<h1 class="text-[26px] font-bold text-slate-900 tracking-tight mt-0.5">Tổng Quan Lễ Tân</h1>
+</div>
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[13px] flex items-center gap-2 shadow-xs transition-all active:scale-95" onclick="openAppointmentModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Tạo lịch hẹn mới</span>
+</button>
+<button class="px-3.5 py-2 rounded-lg bg-white hover:bg-slate-50 text-secondary border border-secondary/30 font-semibold text-[13px] flex items-center gap-2 shadow-xs transition-all active:scale-95" onclick="quickCheckinWalkin()" type="button">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+<span>+ Tiếp đón vãng lai</span>
+</button>
+<button class="px-3.5 py-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-medium text-[13px] flex items-center gap-2 shadow-xs transition-all" onclick="focusSearchBN()" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span>Tra cứu hồ sơ BN</span>
+</button>
+</div>
+</div>
+<!-- 4 KPI Metrics Sync Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden group hover:border-primary/40 transition-all">
+<div class="flex items-center justify-between">
+<span class="text-[13px] text-slate-500 font-medium">Lịch hẹn hôm nay</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-slate-900 leading-none" id="kpiTotal">06</span>
+<span class="text-[12px] text-slate-400 font-medium">lượt hẹn</span>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center gap-1.5 text-primary text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span id="kpiTotalSub">14 đã xác nhận • 4 ca chiều</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden group hover:border-amber-400 transition-all">
+<div class="flex items-center justify-between">
+<span class="text-[13px] text-slate-500 font-medium">Chờ xác nhận</span>
+<div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-amber-700 leading-none" id="kpiPending">01</span>
+<span class="text-[12px] text-slate-400 font-medium">yêu cầu mới</span>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center gap-1.5 text-amber-800 text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-ping"></span>
+<span>Đăng ký online từ website</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden group hover:border-emerald-400 transition-all">
+<div class="flex items-center justify-between">
+<span class="text-[13px] text-slate-500 font-medium">Bệnh nhân đã đến (Check-in)</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-emerald-700 leading-none" id="kpiArrived">02</span>
+<span class="text-[12px] text-slate-400 font-medium">người</span>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center gap-1.5 text-emerald-800 text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Đang chờ hoặc đang điều trị</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between relative overflow-hidden group hover:border-tertiary/40 transition-all">
+<div class="flex items-center justify-between">
+<span class="text-[13px] text-slate-500 font-medium">Lịch tái khám sắp tới</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+</div>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="text-[32px] font-bold text-tertiary leading-none" id="kpiFollowup">06</span>
+<span class="text-[12px] text-slate-400 font-medium">ca theo dõi</span>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center gap-1.5 text-tertiary text-[11px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Theo phác đồ 3 ngày tới</span>
+</div>
+</div>
+</div>
+<!-- Workspace: Main Appointments Table (9 cols) + Realtime Floor Status (3 cols) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-5 items-start">
+<!-- Table Column (Col 9) -->
+<div class="xl:col-span-9 flex flex-col space-y-4">
+<!-- Filters Toolbar -->
+<div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px] pointer-events-none">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg bg-slate-100/70 text-slate-900 placeholder:text-slate-400 text-[13px] focus:bg-white focus:border-primary border border-transparent outline-none transition-all" id="searchInputBN" oninput="filterAppointments()" placeholder="Tìm theo tên BN, SĐT, mã lịch..." type="text"/>
+</div>
+<div class="flex items-center flex-wrap gap-2">
+<div class="flex items-center rounded-lg bg-slate-100/70 border border-slate-200 px-2.5 py-1">
+<span class="material-symbols-outlined text-[16px] text-slate-400 mr-1.5">event</span>
+<input class="bg-transparent text-slate-800 text-[12px] font-medium focus:outline-none" id="filterDate" onchange="filterAppointments()" type="date" value="2026-03-31"/>
+</div>
+<select class="h-9 px-3 rounded-lg bg-slate-100/70 border border-slate-200 text-slate-800 text-[12px] font-medium outline-none cursor-pointer" id="statusFilter" onchange="filterAppointments()">
+<option value="all">Tất cả trạng thái</option>
+<option value="cho-xac-nhan">Chờ xác nhận</option>
+<option value="da-xac-nhan">Đã xác nhận</option>
+<option value="da-den">Đã đến (Check-in)</option>
+<option value="dang-kham">Đang khám</option>
+<option value="hoan-thanh">Hoàn thành</option>
+<option value="da-huy">Đã hủy</option>
+</select>
+<select class="h-9 px-3 rounded-lg bg-slate-100/70 border border-slate-200 text-slate-800 text-[12px] font-medium outline-none cursor-pointer" id="doctorFilter" onchange="filterAppointments()">
+<option value="all">Tất cả bác sĩ</option>
+<option value="BS.CKI Nguyễn Thành Tích">BS.CKI Nguyễn Thành Tích</option>
+<option value="BS. Nguyễn Thị Mai">BS. Nguyễn Thị Mai</option>
+<option value="ThS.BS Lê Hồng Phúc">ThS.BS Lê Hồng Phúc</option>
+</select>
+<button class="w-9 h-9 rounded-lg bg-slate-100/70 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-colors" onclick="resetFilters()" title="Làm mới bộ lọc" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Appointments Table (UPDATED FIXED LAYOUT) -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse text-[13px] table-fixed">
+<thead>
+<tr class="bg-slate-50/80 text-slate-500 text-[11px] font-bold uppercase tracking-wider border-b border-slate-200">
+<th class="py-3 px-3 w-[10%] whitespace-nowrap">Giờ Hẹn</th>
+<th class="py-3 px-3 w-[22%]">Mã Lịch &amp; BN</th>
+<th class="py-3 px-3 w-[24%]">Dịch Vụ Khám</th>
+<th class="py-3 px-3 w-[16%] whitespace-nowrap">Bác Sĩ</th>
+<th class="py-3 px-3 w-[14%] whitespace-nowrap">Trạng Thái</th>
+<th class="py-3 px-3 w-[14%] text-right whitespace-nowrap">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 font-normal" id="appointmentTableBody">
+<!-- Dynamic Rows Rendered Here -->
+</tbody>
+</table>
+</div>
+<!-- Table Pagination -->
+<div class="p-3 bg-slate-50/50 border-t border-slate-100 flex items-center justify-between text-[12px] text-slate-500">
+<div class="flex items-center gap-1.5">
+<span>Hiển thị</span>
+<span class="font-bold text-slate-800" id="visibleRowCount">6</span>
+<span>trên</span>
+<span class="font-bold text-slate-800" id="totalRowCount">18</span>
+<span>lịch hẹn trong ca trực</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-800 font-semibold shadow-xs" type="button">1</button>
+<button class="px-2.5 py-1 rounded text-slate-500 hover:bg-slate-100 transition-all" onclick="showToast('Chuyển trang 2')" type="button">2</button>
+<button class="px-2.5 py-1 rounded text-slate-500 hover:bg-slate-100 transition-all" onclick="showToast('Chuyển trang 3')" type="button">3</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Widgets Column (Col 3) -->
+<div class="xl:col-span-3 flex flex-col space-y-4">
+<!-- Realtime Chair Status Widget -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">airline_seat_flat</span>
+<h3 class="font-bold text-[14px] text-slate-900">Trạng Thái Ghế Khám</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[10px] font-bold">Realtime</span>
+</div>
+<!-- Chair 1 -->
+<div class="p-2.5 rounded-lg bg-primary-fixed/20 border border-primary-fixed/40 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-primary">Ghế 01 (Implant VIP)</span>
+<span class="px-1.5 py-0.5 rounded-full bg-primary text-white text-[10px] font-semibold">Đang khám</span>
+</div>
+<div class="text-[12px] text-slate-800 font-medium truncate">BN. Nguyễn Văn An (14:00 - 15:15)</div>
+<div class="text-[11px] text-slate-500 flex items-center justify-between pt-0.5">
+<span>BS.CKI Thành Tích</span>
+<span class="font-semibold text-primary">Còn 25 phút</span>
+</div>
+</div>
+<!-- Chair 2 -->
+<div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-emerald-800">Ghế 02 (Chỉnh Nha)</span>
+<span class="px-1.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-semibold">Sẵn sàng đón</span>
+</div>
+<div class="text-[12px] text-emerald-950 font-medium">Đã tiệt trùng dụng cụ</div>
+<div class="text-[11px] text-slate-500 flex items-center justify-between pt-0.5">
+<span>BS. Nguyễn Thị Mai</span>
+<span class="font-semibold text-emerald-700">Đang trống</span>
+</div>
+</div>
+<!-- Chair 3 -->
+<div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-slate-800">Ghế 03 (Tiểu Phẫu)</span>
+<span class="px-1.5 py-0.5 rounded-full bg-slate-200 text-slate-700 text-[10px] font-semibold">Chờ ca 15:00</span>
+</div>
+<div class="text-[12px] text-slate-600">Chuẩn bị ca nhổ khôn BS. Phúc</div>
+<div class="text-[11px] text-slate-400">Điều dưỡng: Y sĩ Trúc</div>
+</div>
+<!-- Sảnh chờ -->
+<div class="pt-2 flex items-center justify-between text-[12px] text-slate-500 border-t border-slate-100">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">groups</span>
+<span>Khách đang ngồi tại sảnh:</span>
+</div>
+<span class="font-bold text-secondary px-2 py-0.5 rounded bg-secondary-container/40">02 người</span>
+</div>
+</div>
+<!-- Call Task Widget -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">phone_in_talk</span>
+<h3 class="font-bold text-[14px] text-slate-900">Cần Gọi Trong Ca (3)</h3>
+</div>
+<span class="text-[11px] text-slate-400">Mai 01/04</span>
+</div>
+<!-- Task 1 -->
+<div class="p-2.5 rounded-lg bg-slate-50 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-slate-900">Nguyễn Thị Lan (55t)</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-amber-100 text-amber-800 font-bold">Chưa gọi</span>
+</div>
+<p class="text-[11px] text-slate-500 truncate">Cắt chỉ Implant (09:00 sáng mai)</p>
+<div class="flex items-center justify-between pt-1">
+<span class="text-[12px] text-primary font-bold">0913 223 344</span>
+<button class="px-2 py-1 rounded bg-primary hover:bg-primary-container text-white text-[11px] font-semibold flex items-center gap-1" onclick="showToast('Đang kết nối cuộc gọi tới BN Nguyễn Thị Lan...', 'call')" type="button">
+<span class="material-symbols-outlined text-[13px]">call</span>
+<span>Gọi ngay</span>
+</button>
+</div>
+</div>
+<!-- Task 2 -->
+<div class="p-2.5 rounded-lg bg-slate-50 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-slate-900">Đặng Tuấn Anh (29t)</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-secondary-container/50 text-secondary font-bold">Đã báo</span>
+</div>
+<p class="text-[11px] text-slate-500 truncate">Siết hàm niềng răng (10:30 sáng mai)</p>
+<div class="flex items-center justify-between pt-1 text-[11px] text-secondary font-medium">
+<span>Đã dặn nhịn ăn sáng</span>
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+</div>
+</div>
+<!-- Task 3 -->
+<div class="p-2.5 rounded-lg bg-slate-50 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-bold text-[12px] text-slate-900">Hoàng Mỹ Duyên (22t)</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] bg-error-container text-on-error-container font-bold">Máy bận (lần 1)</span>
+</div>
+<p class="text-[11px] text-slate-500 truncate">Tẩy trắng WhiteMax (14:30 mai)</p>
+<div class="flex items-center justify-between pt-1">
+<span class="text-[12px] text-primary font-bold">0944 887 990</span>
+<button class="px-2 py-1 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 text-[11px] font-semibold flex items-center gap-1" onclick="showToast('Đã gửi tin nhắn Zalo ZNS nhắc lịch cho BN Hoàng Mỹ Duyên!', 'chat')" type="button">
+<span class="material-symbols-outlined text-[13px]">chat</span>
+<span>Gửi ZNS</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE 2: LỊCH HẸN (FULL VIEW) -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-appointments">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Toàn Bộ Lịch Hẹn Khám</h2>
+<p class="text-[12px] text-slate-500">Theo dõi, điều phối lịch hẹn theo tuần, tháng và phòng nha</p>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[13px] flex items-center gap-2 self-start shadow-xs" onclick="openAppointmentModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Đặt lịch hẹn mới</span>
+</button>
+</div>
+<div class="p-3.5 rounded-xl bg-white border border-slate-200 flex items-center justify-between gap-3 shadow-xs">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-md bg-primary text-white font-semibold text-[12px]" type="button">Hôm nay</button>
+<button class="px-3 py-1.5 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium text-[12px]" type="button">Tuần này</button>
+<button class="px-3 py-1.5 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium text-[12px]" type="button">Tháng này</button>
+</div>
+<div class="text-[12px] text-slate-500 font-medium">Tổng số 18 lượt hẹn đã ghi nhận</div>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+<div class="overflow-x-auto w-full">
+<!-- UPDATED FULL TABLE -->
+<table class="w-full text-left border-collapse text-[13px] table-fixed">
+<thead class="bg-slate-50 text-slate-500 text-[11px] font-bold uppercase border-b border-slate-200">
+<tr>
+<th class="py-3 px-3 w-[12%] whitespace-nowrap">Mã Lịch</th>
+<th class="py-3 px-3 w-[14%] whitespace-nowrap">Giờ &amp; Ngày</th>
+<th class="py-3 px-3 w-[20%]">Bệnh Nhân</th>
+<th class="py-3 px-3 w-[22%]">Dịch Vụ Khám</th>
+<th class="py-3 px-3 w-[16%] whitespace-nowrap">Bác Sĩ</th>
+<th class="py-3 px-3 w-[10%] whitespace-nowrap">Trạng Thái</th>
+<th class="py-3 px-3 w-[6%] text-right whitespace-nowrap"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100" id="fullAppointmentTableBody">
+<!-- Dynamically synced via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- PAGE 3: LỊCH TÁI KHÁM ĐỊNH KỲ -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-followups">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Quản Lý Lịch Tái Khám</h2>
+<p class="text-[12px] text-slate-500">Chỉ định tái khám theo phác đồ của bác sĩ (cắt chỉ, chỉnh nha, kiểm tra khớp cắn)</p>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-secondary hover:bg-secondary/90 text-white font-semibold text-[13px] flex items-center gap-2 self-start shadow-xs" onclick="showToast('Mở tạo phiếu chỉ định tái khám mới', 'event_repeat')" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Thêm phiếu tái khám</span>
+</button>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+<table class="w-full text-left text-[13px]">
+<thead class="bg-slate-50 text-slate-500 text-[11px] font-bold uppercase border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Mã Tái Khám</th>
+<th class="py-3 px-4">Bệnh Nhân</th>
+<th class="py-3 px-4">Nội Dung Điều Trị</th>
+<th class="py-3 px-4">Ngày Đề Xuất</th>
+<th class="py-3 px-4">Bác Sĩ Chỉ Định</th>
+<th class="py-3 px-4">Trạng Thái Liên Hệ</th>
+<th class="py-3 px-4 text-right">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50/70">
+<td class="py-3.5 px-4 font-bold text-primary">#TK-2026-041</td>
+<td class="py-3.5 px-4 font-medium">Nguyễn Thị Lan (0913 223 344)</td>
+<td class="py-3.5 px-4">Cắt chỉ &amp; kiểm tra tích hợp xương Implant #16</td>
+<td class="py-3.5 px-4 text-error font-semibold">01/04/2026 (Sáng mai)</td>
+<td class="py-3.5 px-4">BS.CKI Thành Tích</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Chưa liên hệ</span></td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-primary text-white text-[11px] font-semibold" onclick="showToast('Đã gọi điện thoại đặt lịch cho BN Lan', 'call')" type="button">Gọi đặt lịch</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/70">
+<td class="py-3.5 px-4 font-bold text-primary">#TK-2026-039</td>
+<td class="py-3.5 px-4 font-medium">Đặng Tuấn Anh (0902 445 112)</td>
+<td class="py-3.5 px-4">Thay dây cung &amp; siết mắc cài giai đoạn 3</td>
+<td class="py-3.5 px-4 text-slate-800">01/04/2026</td>
+<td class="py-3.5 px-4">BS. Nguyễn Thị Mai</td>
+<td class="py-3.5 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary-container/50 text-secondary">Đã xác nhận hẹn</span></td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] font-medium" onclick="showToast('Xem chi tiết bệnh án', 'folder_open')" type="button">Xem bệnh án</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- PAGE 4: NHẮC LỊCH & THÔNG BÁO -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-reminders">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Nhắc Lịch &amp; Thông Báo Khách Hàng</h2>
+<p class="text-[12px] text-slate-500">Danh sách các cuộc gọi nhắc hẹn hôm nay và ngày mai theo trạng thái xử lý</p>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[13px] flex items-center gap-1.5 shadow-xs" onclick="showToast('Đã gửi tin nhắn Zalo ZNS tự động cho toàn bộ danh sách!', 'send')" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Gửi ZNS hàng loạt</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="space-y-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Cần liên hệ</span>
+<h4 class="font-bold text-[15px] text-slate-900 mt-2">Nguyễn Thị Lan (55t)</h4>
+<p class="text-[12px] text-slate-500">Giờ hẹn: 09:00, 01/04 • Cắt chỉ Implant</p>
+<p class="text-[13px] font-bold text-primary">0913 223 344</p>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-slate-100 mt-3">
+<button class="flex-1 py-1.5 rounded bg-primary text-white text-[11px] font-semibold flex items-center justify-center gap-1" onclick="showToast('Đang kết nối gọi BN Lan...', 'call')" type="button">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>Gọi điện</span>
+</button>
+<button class="flex-1 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-semibold" onclick="showToast('Đã xác nhận thành công!', 'check')" type="button">Xác nhận</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="space-y-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container/50 text-secondary">Đã liên hệ</span>
+<h4 class="font-bold text-[15px] text-slate-900 mt-2">Đặng Tuấn Anh (29t)</h4>
+<p class="text-[12px] text-slate-500">Giờ hẹn: 10:30, 01/04 • Chỉnh nha</p>
+<p class="text-[13px] font-bold text-primary">0902 445 112</p>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-slate-100 mt-3">
+<span class="text-[11px] text-secondary font-medium">Bệnh nhân cam kết đến đúng giờ</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+<div class="space-y-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container">Cần gọi lại (Máy bận)</span>
+<h4 class="font-bold text-[15px] text-slate-900 mt-2">Hoàng Mỹ Duyên (22t)</h4>
+<p class="text-[12px] text-slate-500">Giờ hẹn: 14:30, 01/04 • Tẩy trắng</p>
+<p class="text-[13px] font-bold text-primary">0944 887 990</p>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-slate-100 mt-3">
+<button class="flex-1 py-1.5 rounded bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-semibold" onclick="showToast('Đang gọi lại lần 2...', 'call')" type="button">Gọi lại lần 2</button>
+<button class="flex-1 py-1.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] font-medium" onclick="showToast('Đã gửi tin nhắn nhắc lịch', 'sms')" type="button">Gửi SMS</button>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE 5: QUẢN LÝ BỆNH NHÂN -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-patients">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Danh Sách Hồ Sơ Bệnh Nhân</h2>
+<p class="text-[12px] text-slate-500">Tra cứu thông tin hành chính, tiền sử dị ứng, lịch sử khám và hồ sơ bệnh án</p>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[13px] flex items-center gap-2 self-start shadow-xs" onclick="quickCheckinWalkin()" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Đăng ký bệnh nhân mới</span>
+</button>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+<table class="w-full text-left text-[13px]">
+<thead class="bg-slate-50 text-slate-500 text-[11px] font-bold uppercase border-b border-slate-200">
+<tr>
+<th class="py-3 px-4">Mã BN</th>
+<th class="py-3 px-4">Họ và Tên</th>
+<th class="py-3 px-4">Số Điện Thoại</th>
+<th class="py-3 px-4">Ngày Sinh / Giới tính</th>
+<th class="py-3 px-4">Lần Khám Gần Nhất</th>
+<th class="py-3 px-4">Bác Sĩ Phụ Trách</th>
+<th class="py-3 px-4 text-right">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50/70">
+<td class="py-3.5 px-4 font-bold text-primary">BN-2025-089</td>
+<td class="py-3.5 px-4 font-bold text-slate-900">Nguyễn Văn An</td>
+<td class="py-3.5 px-4 font-medium text-slate-500">0905 123 456</td>
+<td class="py-3.5 px-4">1984 (42t) • Nam</td>
+<td class="py-3.5 px-4">Hôm nay, 14:00 (Đang khám)</td>
+<td class="py-3.5 px-4">BS.CKI Thành Tích</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-primary font-semibold text-[11px]" onclick="openDetailModal('BN-2025-089', 'Nguyễn Văn An', '0905 123 456', 'Cấy ghép Implant Straumann', 'BS.CKI Nguyễn Thành Tích', 'Đang khám')" type="button">Xem hồ sơ</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/70">
+<td class="py-3.5 px-4 font-bold text-primary">BN-2025-094</td>
+<td class="py-3.5 px-4 font-bold text-slate-900">Trần Bảo Trâm</td>
+<td class="py-3.5 px-4 font-medium text-slate-500">0912 889 001</td>
+<td class="py-3.5 px-4">1998 (28t) • Nữ</td>
+<td class="py-3.5 px-4">Hôm nay, 14:18 (Check-in)</td>
+<td class="py-3.5 px-4">BS. Nguyễn Thị Mai</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-primary font-semibold text-[11px]" onclick="openDetailModal('BN-2025-094', 'Trần Bảo Trâm', '0912 889 001', 'Niềng răng Invisalign', 'BS. Nguyễn Thị Mai', 'Đã đến')" type="button">Xem hồ sơ</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/70">
+<td class="py-3.5 px-4 font-bold text-primary">BN-2025-102</td>
+<td class="py-3.5 px-4 font-bold text-slate-900">Lê Hoàng Nam</td>
+<td class="py-3.5 px-4 font-medium text-slate-500">0987 654 321</td>
+<td class="py-3.5 px-4">1991 (35t) • Nam</td>
+<td class="py-3.5 px-4">Hôm nay, 15:00 (Chờ duyệt)</td>
+<td class="py-3.5 px-4">ThS.BS Lê Hồng Phúc</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-primary font-semibold text-[11px]" onclick="openDetailModal('BN-2025-102', 'Lê Hoàng Nam', '0987 654 321', 'Nhổ răng khôn mọc lệch #38', 'ThS.BS Lê Hồng Phúc', 'Chờ xác nhận')" type="button">Xem hồ sơ</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- PAGE 6: HỒ SƠ TIẾP ĐÓN SẢNH -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-checkin-records">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Nhật Ký Tiếp Đón Quầy Lễ Tân</h2>
+<p class="text-[12px] text-slate-500">Danh sách tất cả bệnh nhân đã qua quầy sảnh hôm nay và bàn giao vào phòng điều trị</p>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[13px] flex items-center gap-1.5 shadow-xs" onclick="showToast('Xuất danh sách đón sảnh thành file Excel', 'download')" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Xuất báo cáo ca trực</span>
+</button>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-5 space-y-4 shadow-xs">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<span class="text-[14px] font-semibold text-slate-900">Ca Sáng (08:00 - 12:00): 11 lượt tiếp nhận</span>
+<span class="text-[12px] text-secondary font-bold px-2.5 py-1 rounded-full bg-secondary-container/40">100% Hoàn tất</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[14px] font-semibold text-slate-900">Ca Chiều (13:30 - Hiện tại): 7 lượt tiếp nhận</span>
+<span class="text-[12px] text-primary font-bold px-2.5 py-1 rounded-full bg-primary-fixed/50">Đang xử lý</span>
+</div>
+</div>
+</div>
+<!-- PAGE 7: THÔNG TIN TÀI KHOẢN -->
+<div class="page-view hidden p-4 md:p-6 space-y-5" id="page-account-profile">
+<div>
+<h2 class="text-[22px] font-bold text-slate-900">Thông Tin Tài Khoản Lễ Tân</h2>
+<p class="text-[12px] text-slate-500">Quản lý hồ sơ nhân viên, phân quyền ca làm việc và cài đặt bảo mật</p>
+</div>
+<div class="bg-white rounded-xl border border-slate-200 p-6 max-w-2xl space-y-5 shadow-xs">
+<div class="flex items-center gap-4 pb-4 border-b border-slate-100">
+<div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[24px]">TM</div>
+<div>
+<h3 class="font-bold text-[18px] text-slate-900">Đỗ Tuyết Mai</h3>
+<p class="text-[13px] text-slate-500">Lễ tân trưởng • Bộ phận Tiếp đón &amp; Chăm sóc khách hàng</p>
+<span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">Tài khoản đang hoạt động</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 text-[13px]">
+<div>
+<span class="text-slate-500">Mã nhân viên:</span>
+<p class="font-bold text-slate-900">LT-0012</p>
+</div>
+<div>
+<span class="text-slate-500">Email công vụ:</span>
+<p class="font-bold text-slate-900">mai.dt@nhakhoathanhtich.vn</p>
+</div>
+<div>
+<span class="text-slate-500">Số điện thoại:</span>
+<p class="font-bold text-slate-900">0988 123 789</p>
+</div>
+<div>
+<span class="text-slate-500">Khu vực phân công:</span>
+<p class="font-bold text-slate-900">Quầy Lễ Tân Tầng 1</p>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-2.5">
+<button class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-[12px] font-medium" onclick="showToast('Mở form đổi mật khẩu', 'lock')" type="button">Đổi mật khẩu</button>
+<button class="px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-white text-[12px] font-semibold" onclick="showToast('Đã lưu thông tin tài khoản!', 'save')" type="button">Cập nhật hồ sơ</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<!-- FLOATING FLYOUT SUBMENU -->
+<div class="fixed hidden z-50 bg-white rounded-xl border border-slate-200 p-2 shadow-2xl w-56 text-[13px]" id="flyoutSubmenu">
+<div class="px-3 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 mb-1" id="flyoutHeader">
+    Nhóm chức năng
+  </div>
+<div class="space-y-1" id="flyoutItems">
+<!-- Populated dynamically via JS -->
+</div>
+</div>
+<!-- MODAL: TẠO LỊCH HẸN MỚI -->
+<div class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs hidden items-center justify-center p-4" id="appointmentModal">
+<div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden border border-slate-200">
+<div class="p-4 px-6 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-xs">
+<span class="material-symbols-outlined text-[22px]">calendar_add_on</span>
+</div>
+<div>
+<h3 class="font-bold text-[17px] text-slate-900 leading-tight">Đặt Lịch Hẹn Khám Mới</h3>
+<span class="text-[12px] text-slate-500">Đồng bộ tự động vào ca trực &amp; kiểm tra xung đột bác sĩ</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors" onclick="closeAppointmentModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<form class="p-6 overflow-y-auto space-y-4 flex-1 text-[13px]" id="appointmentForm" onsubmit="handleCreateAppointment(event)">
+<!-- Tab: BN cũ vs BN mới -->
+<div class="flex rounded-lg bg-slate-100 p-1 border border-slate-200">
+<button class="flex-1 py-1.5 rounded-md font-semibold text-primary bg-white shadow-xs text-center transition-all" id="tabOldBtn" onclick="switchPatientTab('old')" type="button">
+          1. Bệnh nhân đã có hồ sơ
+        </button>
+<button class="flex-1 py-1.5 rounded-md font-semibold text-slate-500 hover:text-slate-800 text-center transition-all" id="tabNewBtn" onclick="switchPatientTab('new')" type="button">
+          2. Bệnh nhân mới / Khách vãng lai
+        </button>
+</div>
+<!-- Old Patient Section -->
+<div class="space-y-1.5" id="oldPatientSection">
+<label class="font-semibold text-slate-800">Tìm hồ sơ bệnh nhân <span class="text-error">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">person_search</span>
+<input class="w-full h-10 pl-9 pr-3 rounded-lg bg-slate-50 border border-slate-200 focus:bg-white focus:border-primary outline-none" id="inputSearchOldPatient" placeholder="Gõ tên hoặc số điện thoại (ví dụ: An, 0905...)" type="text"/>
+</div>
+<div class="text-[11px] text-slate-400 flex items-center justify-between">
+<span>Gợi ý: Nguyễn Văn An, Trần Bảo Trâm, Lê Hoàng Nam</span>
+<span class="text-secondary font-medium cursor-pointer" onclick="fillMockPatient('Nguyễn Văn An', '0905 123 456')">Chọn mẫu</span>
+</div>
+</div>
+<!-- New Patient Section -->
+<div class="hidden space-y-3" id="newPatientSection">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="font-semibold text-slate-800">Họ và tên bệnh nhân <span class="text-error">*</span></label>
+<input class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-primary" id="newPatientName" placeholder="Ví dụ: Hoàng Minh Trí" type="text"/>
+</div>
+<div>
+<label class="font-semibold text-slate-800">Số điện thoại liên hệ <span class="text-error">*</span></label>
+<input class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-primary" id="newPatientPhone" placeholder="09xx xxx xxx" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="font-semibold text-slate-800">Năm sinh / Tuổi</label>
+<input class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none" id="newPatientAge" placeholder="1992" type="number"/>
+</div>
+<div>
+<label class="font-semibold text-slate-800">Giới tính</label>
+<select class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none" id="newPatientGender">
+<option value="Nam">Nam</option>
+<option value="Nữ">Nữ</option>
+<option value="Khác">Khác</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Date & Time -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+<div>
+<label class="font-semibold text-slate-800">Ngày hẹn khám <span class="text-error">*</span></label>
+<input class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:border-primary" id="formApptDate" required="" type="date" value="2026-03-31"/>
+</div>
+<div>
+<label class="font-semibold text-slate-800">Khung giờ hẹn <span class="text-error">*</span></label>
+<select class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:border-primary" id="formApptTime" required="">
+<option value="15:00">15:00 - 15:30</option>
+<option value="15:30">15:30 - 16:00</option>
+<option value="16:00">16:00 - 16:30</option>
+<option value="16:30">16:30 - 17:00</option>
+<option value="17:00">17:00 - 17:30</option>
+<option value="17:30">17:30 - 18:00 (Ca tối)</option>
+</select>
+</div>
+</div>
+<!-- Service & Doctor -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="font-semibold text-slate-800">Dịch vụ nha khoa <span class="text-error">*</span></label>
+<select class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:border-primary" id="formApptService" required="">
+<option value="Khám tổng quát &amp; Tư vấn">Khám tổng quát &amp; Tư vấn</option>
+<option value="Cấy ghép Implant Straumann">Cấy ghép Implant Straumann</option>
+<option value="Niềng răng Invisalign">Niềng răng Invisalign</option>
+<option value="Nhổ răng khôn không đau">Nhổ răng khôn không đau</option>
+<option value="Tẩy trắng WhiteMax">Tẩy trắng WhiteMax</option>
+<option value="Trám răng thẩm mỹ Laser Tech">Trám răng thẩm mỹ Laser Tech</option>
+</select>
+</div>
+<div>
+<label class="font-semibold text-slate-800">Bác sĩ điều trị <span class="text-error">*</span></label>
+<select class="w-full h-9 px-3 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:border-primary" id="formApptDoctor" required="">
+<option value="BS.CKI Nguyễn Thành Tích">BS.CKI Nguyễn Thành Tích (Trưởng khoa)</option>
+<option value="BS. Nguyễn Thị Mai">BS. Nguyễn Thị Mai (Chỉnh nha)</option>
+<option value="ThS.BS Lê Hồng Phúc">ThS.BS Lê Hồng Phúc (Hàm mặt)</option>
+</select>
+</div>
+</div>
+<!-- Notes -->
+<div>
+<label class="font-semibold text-slate-800">Ghi chú y khoa &amp; Tiền sử bệnh nền</label>
+<textarea class="w-full p-2.5 mt-1 rounded-lg bg-slate-50 border border-slate-200 outline-none focus:border-primary" id="formApptNote" placeholder="Ví dụ: Khách sợ đau, dị ứng thuốc gây tê, huyết áp..." rows="2"></textarea>
+</div>
+<!-- Modal Footer -->
+<div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+<button class="px-4 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 font-medium text-[13px] transition-colors" onclick="closeAppointmentModal()" type="button">Hủy bỏ</button>
+<button class="px-5 py-2 rounded-lg bg-primary hover:bg-primary-container text-white font-bold text-[13px] flex items-center gap-1.5 shadow-xs transition-all" type="submit">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Lưu &amp; Xác Nhận Lịch Hẹn</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL: XEM CHI TIẾT LỊCH HẸN / HỒ SƠ -->
+<div class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs hidden items-center justify-center p-4" id="detailModal">
+<div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+<div class="p-4 px-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">account_circle</span>
+<h3 class="font-bold text-[16px] text-slate-900" id="detailModalTitle">Chi Tiết Lịch Hẹn</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-slate-200 text-slate-500" onclick="closeDetailModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-5 space-y-3 text-[13px]" id="detailModalContent">
+<!-- Content Rendered dynamically via JS -->
+</div>
+<div class="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-primary text-white font-semibold text-[12px]" onclick="closeDetailModal()" type="button">Đóng cửa sổ</button>
+</div>
+</div>
+</div>
+<!-- TOAST NOTIFICATION CONTAINER -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toastMessage">
+<div class="px-4 py-3 rounded-xl bg-slate-900 text-white shadow-xl flex items-center gap-2.5 text-[13px] font-medium border border-slate-700">
+<span class="material-symbols-outlined text-emerald-400" id="toastIcon">check_circle</span>
+<span id="toastText">Thao tác thành công</span>
+</div>
+</div>
+<!-- CORE JAVASCRIPT ENGINE -->
+<script>
+  // Initial Dataset synchronized with Reception KPIs (Total: 6, Pending: 1, Arrived: 2, Followup: 6)
+  let appointmentList = [
+    {
+      id: "LH-2025-089",
+      time: "14:00",
+      date: "2026-03-31",
+      patientName: "Nguyễn Văn An",
+      patientMeta: "Nam, 42t",
+      phone: "0905 123 456",
+      service: "Cấy ghép Implant Straumann",
+      serviceDesc: "Giai đoạn cắm trụ xương hàm #16",
+      doctor: "BS.CKI Nguyễn Thành Tích",
+      doctorInit: "NT",
+      status: "dang-kham",
+      statusLabel: "Đang khám",
+      chair: "Ghế 01"
+    },
+    {
+      id: "LH-2025-094",
+      time: "14:30",
+      date: "2026-03-31",
+      patientName: "Trần Bảo Trâm",
+      patientMeta: "Nữ, 28t",
+      phone: "0912 889 001",
+      service: "Niềng răng trong suốt Invisalign",
+      serviceDesc: "Giao khay số 06 & kiểm tra khớp cắn",
+      doctor: "BS. Nguyễn Thị Mai",
+      doctorInit: "NM",
+      status: "da-den",
+      statusLabel: "Đã đến (Sảnh chờ)",
+      chair: "Ghế 02"
+    },
+    {
+      id: "LH-2025-102",
+      time: "15:00",
+      date: "2026-03-31",
+      patientName: "Lê Hoàng Nam",
+      patientMeta: "Nam, 35t",
+      phone: "0987 654 321",
+      service: "Nhổ răng khôn mọc lệch #38",
+      serviceDesc: "Ghi chú: Tiền sử dị ứng Penicillin",
+      doctor: "ThS.BS Lê Hồng Phúc",
+      doctorInit: "LP",
+      status: "cho-xac-nhan",
+      statusLabel: "Chờ xác nhận",
+      chair: "Ghế 03"
+    },
+    {
+      id: "LH-2025-105",
+      time: "15:30",
+      date: "2026-03-31",
+      patientName: "Phạm Hương Giang",
+      patientMeta: "Nữ, 31t",
+      phone: "0933 445 566",
+      service: "Tẩy trắng răng công nghệ WhiteMax",
+      serviceDesc: "Đã vệ sinh lấy cao răng tuần trước",
+      doctor: "BS.CKI Nguyễn Thành Tích",
+      doctorInit: "NT",
+      status: "da-xac-nhan",
+      statusLabel: "Đã xác nhận",
+      chair: ""
+    },
+    {
+      id: "LH-2025-081",
+      time: "13:30",
+      date: "2026-03-31",
+      patientName: "Đoàn Quốc Dũng",
+      patientMeta: "Nam, 50t",
+      phone: "0908 998 776",
+      service: "Trám răng Laser Tech phục hình",
+      serviceDesc: "Răng hàm #46 và #47 đã hoàn tất",
+      doctor: "BS. Nguyễn Thị Mai",
+      doctorInit: "NM",
+      status: "hoan-thanh",
+      statusLabel: "Hoàn thành",
+      chair: ""
+    },
+    {
+      id: "LH-2025-110",
+      time: "16:30",
+      date: "2026-03-31",
+      patientName: "Vũ Kiều Oanh",
+      patientMeta: "Nữ, 24t",
+      phone: "0977 112 233",
+      service: "Lấy cao răng & đánh bóng",
+      serviceDesc: "Hủy lúc 11:15 do bận công tác đột xuất",
+      doctor: "ThS.BS Lê Hồng Phúc",
+      doctorInit: "LP",
+      status: "da-huy",
+      statusLabel: "Đã hủy",
+      chair: ""
+    }
+  ];
+
+  // Map of submenus for flyout popover in collapsed mode
+  const flyoutMenuData = {
+    schedule: {
+      title: "2. Quản lý lịch",
+      items: [
+        { label: "Lịch hẹn", icon: "event_note", pageId: "page-appointments" },
+        { label: "Lịch tái khám", icon: "event_repeat", pageId: "page-followups" },
+        { label: "Nhắc lịch & thông báo", icon: "notification_important", pageId: "page-reminders" }
+      ]
+    },
+    patients: {
+      title: "3. Quản lý bệnh nhân",
+      items: [
+        { label: "Danh sách bệnh nhân", icon: "person_search", pageId: "page-patients" },
+        { label: "Hồ sơ tiếp đón", icon: "badge", pageId: "page-checkin-records" }
+      ]
+    }
+  };
+
+  // 1. Navigation Switcher
+  function navigateTo(pageId, linkEl) {
+    document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+    const target = document.getElementById(pageId);
+    if (target) target.classList.remove('hidden');
+
+    // Update active styles on sidebar items
+    document.querySelectorAll('#sidebar .nav-item-btn').forEach(link => {
+      if (link.getAttribute('data-page')) {
+        link.className = 'nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-[13px] text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all';
+      }
+    });
+
+    const activeLink = linkEl || document.querySelector(`#sidebar [data-page="${pageId}"]`);
+    if (activeLink && activeLink.getAttribute('data-page')) {
+      activeLink.className = 'nav-item-btn flex items-center gap-3 px-3 py-2 rounded-lg font-semibold text-[13px] bg-primary text-white shadow-sm shadow-primary/25 transition-all';
+    }
+
+    // Update Breadcrumb
+    const breadcrumb = document.getElementById('breadcrumbCurrentPage');
+    if (breadcrumb) {
+      const pageNames = {
+        'page-dashboard': 'Tổng quan lễ tân',
+        'page-appointments': 'Quản lý lịch hẹn',
+        'page-followups': 'Lịch tái khám định kỳ',
+        'page-reminders': 'Nhắc lịch & thông báo',
+        'page-patients': 'Danh sách bệnh nhân',
+        'page-checkin-records': 'Hồ sơ tiếp đón sảnh',
+        'page-account-profile': 'Thông tin tài khoản'
+      };
+      breadcrumb.textContent = pageNames[pageId] || 'Trang làm việc';
+    }
+
+    // Hide any flyout
+    hideFlyoutMenu();
+
+    // Render corresponding sub page if needed
+    if (pageId === 'page-appointments') {
+      renderFullAppointments();
+    }
+
+    try { localStorage.setItem('nk_reception_page', pageId); } catch(e) {}
+  }
+
+  // 2. Render Dashboard Table
+  function renderAppointmentTable(list = appointmentList) {
+    const tbody = document.getElementById('appointmentTableBody');
+    if (!tbody) return;
+
+    if (list.length === 0) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="text-center py-8 text-slate-400 text-[13px]">
+            Không tìm thấy lịch hẹn nào phù hợp với bộ lọc đã chọn.
+          </td>
+        </tr>
+      `;
+      document.getElementById('visibleRowCount').textContent = '0';
+      return;
+    }
+
+    tbody.innerHTML = list.map(item => {
+      let badgeStyle = "bg-slate-100 text-slate-700";
+      let statusDot = "bg-slate-400";
+      if (item.status === 'dang-kham') {
+        badgeStyle = "bg-primary/10 text-primary";
+        statusDot = "bg-primary animate-pulse";
+      } else if (item.status === 'da-den') {
+        badgeStyle = "bg-emerald-100 text-emerald-800";
+        statusDot = "bg-emerald-600";
+      } else if (item.status === 'cho-xac-nhan') {
+        badgeStyle = "bg-amber-100 text-amber-800";
+        statusDot = "bg-amber-600 animate-ping";
+      } else if (item.status === 'da-xac-nhan') {
+        badgeStyle = "bg-primary-fixed text-on-primary-fixed-variant";
+        statusDot = "bg-primary";
+      } else if (item.status === 'hoan-thanh') {
+        badgeStyle = "bg-slate-100 text-slate-600";
+        statusDot = "bg-slate-400";
+      } else if (item.status === 'da-huy') {
+        badgeStyle = "bg-error-container text-on-error-container";
+        statusDot = "bg-error";
+      }
+
+      let actionsHtml = '';
+      if (item.status === 'cho-xac-nhan') {
+        actionsHtml = `
+          <button type="button" onclick="confirmAction('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-all">
+            <span class="material-symbols-outlined text-[15px]">call_end</span>
+            <span>Xác nhận</span>
+          </button>
+          <button type="button" onclick="cancelActionPrompt('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-error hover:bg-error-container/30 transition-all" title="Hủy lịch">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        `;
+      } else if (item.status === 'da-xac-nhan') {
+        actionsHtml = `
+          <button type="button" onclick="checkinAction('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-white font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-all">
+            <span class="material-symbols-outlined text-[15px]">how_to_reg</span>
+            <span>Tiếp nhận</span>
+          </button>
+          <button type="button" onclick="cancelActionPrompt('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-error hover:bg-error-container/30 transition-all" title="Hủy lịch">
+            <span class="material-symbols-outlined text-[18px]">cancel</span>
+          </button>
+        `;
+      } else if (item.status === 'da-den') {
+        actionsHtml = `
+          <button type="button" onclick="sendToChairAction('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-secondary hover:bg-secondary/90 text-white font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-all">
+            <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            <span>Vào ghế</span>
+          </button>
+        `;
+      } else if (item.status === 'dang-kham') {
+        actionsHtml = `
+          <span class="text-[11px] font-semibold text-primary px-2 py-1 rounded bg-primary-fixed/30">${item.chair || 'Đang điều trị'}</span>
+        `;
+      } else if (item.status === 'hoan-thanh') {
+        actionsHtml = `
+          <button type="button" onclick="showToast('In phiếu thanh toán & hoàn tất khám cho ${item.id}', 'print')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-800 text-[11px] font-medium">In phiếu</button>
+        `;
+      } else if (item.status === 'da-huy') {
+        actionsHtml = `
+          <button type="button" onclick="showToast('Lý do hủy: ${item.serviceDesc}', 'info')" class="px-2 py-1 rounded bg-slate-100 text-slate-500 text-[11px]">Xem lý do</button>
+        `;
+      }
+
+      actionsHtml += `
+        <button type="button" onclick="viewAppointmentDetail('${item.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all" title="Xem chi tiết">
+          <span class="material-symbols-outlined text-[18px]">visibility</span>
+        </button>
+      `;
+
+      return `
+        <tr class="hover:bg-slate-50/60 transition-colors" data-id="${item.id}">
+          <td class="py-3 px-3 whitespace-nowrap">
+            <div class="flex items-center gap-1.5 font-bold text-[15px] text-slate-900">
+              <span>${item.time}</span>
+              ${item.status === 'dang-kham' ? '<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>' : ''}
+            </div>
+            <span class="text-[11px] text-slate-400">${item.date === '2026-03-31' ? 'Hôm nay' : item.date}</span>
+          </td>
+
+          <td class="py-3 px-3">
+            <div class="flex items-center gap-1.5 truncate">
+              <span class="font-bold text-[13px] text-slate-900 truncate">${item.patientName}</span>
+              <span class="px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 text-[10px] font-medium flex-shrink-0">${item.patientMeta}</span>
+            </div>
+            <div class="flex items-center gap-1 text-[11px] text-slate-500 mt-0.5 truncate">
+              <span class="text-primary font-medium">#${item.id}</span>
+              <span>•</span>
+              <span>${item.phone}</span>
+            </div>
+          </td>
+
+          <td class="py-3 px-3">
+            <div class="font-semibold text-slate-900 truncate">${item.service}</div>
+            <div class="text-[11px] text-slate-500 truncate">${item.serviceDesc}</div>
+          </td>
+
+          <td class="py-3 px-3">
+            <div class="flex items-center gap-1.5">
+              <div class="w-6 h-6 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold text-[10px] flex-shrink-0">
+                ${item.doctorInit}
+              </div>
+              <span class="text-[12px] font-medium text-slate-800 truncate">${item.doctor}</span>
+            </div>
+          </td>
+
+          <td class="py-3 px-3 whitespace-nowrap">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${badgeStyle} text-[11px] font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full ${statusDot} flex-shrink-0"></span>
+              <span>${item.statusLabel}</span>
+            </span>
+          </td>
+
+          <td class="py-3 px-3 text-right whitespace-nowrap">
+            <div class="inline-flex items-center gap-1 justify-end">
+              ${actionsHtml}
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    document.getElementById('visibleRowCount').textContent = list.length;
+    updateKpis();
+  }
+
+  // 3. Render Full Appointments Tab
+  function renderFullAppointments() {
+    const tbody = document.getElementById('fullAppointmentTableBody');
+    if (!tbody) return;
+    tbody.innerHTML = appointmentList.map(item => `
+      <tr class="hover:bg-slate-50/70">
+        <td class="py-3 px-3 font-bold text-primary whitespace-nowrap">#${item.id}</td>
+        <td class="py-3 px-3 font-semibold text-slate-800 whitespace-nowrap">${item.time} • ${item.date}</td>
+        <td class="py-3 px-3">
+          <div class="font-bold text-slate-900 truncate">${item.patientName}</div>
+          <div class="text-[11px] text-slate-400 truncate">${item.phone}</div>
+        </td>
+        <td class="py-3 px-3 text-slate-700 truncate">${item.service}</td>
+        <td class="py-3 px-3 text-slate-800 truncate">${item.doctor}</td>
+        <td class="py-3 px-3 whitespace-nowrap">
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">${item.statusLabel}</span>
+        </td>
+        <td class="py-3 px-3 text-right whitespace-nowrap">
+          <button type="button" onclick="viewAppointmentDetail('${item.id}')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-primary font-semibold text-[11px]">Chi tiết</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  // 4. Update KPI Counters
+  function updateKpis() {
+    const total = appointmentList.length;
+    const pending = appointmentList.filter(i => i.status === 'cho-xac-nhan').length;
+    const arrived = appointmentList.filter(i => i.status === 'da-den' || i.status === 'dang-kham').length;
+
+    const elTotal = document.getElementById('kpiTotal');
+    const elPending = document.getElementById('kpiPending');
+    const elArrived = document.getElementById('kpiArrived');
+    const elTotalRow = document.getElementById('totalRowCount');
+
+    if (elTotal) elTotal.textContent = total < 10 ? '0' + total : total;
+    if (elPending) elPending.textContent = pending < 10 ? '0' + pending : pending;
+    if (elArrived) elArrived.textContent = arrived < 10 ? '0' + arrived : arrived;
+    if (elTotalRow) elTotalRow.textContent = total;
+  }
+
+  // 5. Dynamic Filtering
+  function filterAppointments() {
+    const searchVal = (document.getElementById('searchInputBN').value || '').toLowerCase().trim();
+    const statusVal = document.getElementById('statusFilter').value;
+    const doctorVal = document.getElementById('doctorFilter').value;
+
+    const filtered = appointmentList.filter(item => {
+      const textMatch = !searchVal ||
+        item.patientName.toLowerCase().includes(searchVal) ||
+        item.phone.includes(searchVal) ||
+        item.id.toLowerCase().includes(searchVal) ||
+        item.service.toLowerCase().includes(searchVal);
+
+      const statusMatch = (statusVal === 'all') || (item.status === statusVal);
+      const doctorMatch = (doctorVal === 'all') || (item.doctor === doctorVal);
+
+      return textMatch && statusMatch && doctorMatch;
+    });
+
+    renderAppointmentTable(filtered);
+  }
+
+  function resetFilters() {
+    document.getElementById('searchInputBN').value = '';
+    document.getElementById('statusFilter').value = 'all';
+    document.getElementById('doctorFilter').value = 'all';
+    renderAppointmentTable();
+    showToast('Đã làm mới bộ lọc danh sách', 'refresh');
+  }
+
+  function handleGlobalSearch(keyword) {
+    const input = document.getElementById('searchInputBN');
+    if (input) input.value = keyword;
+    filterAppointments();
+  }
+
+  function focusSearchBN() {
+    const input = document.getElementById('searchInputBN');
+    if (input) {
+      input.focus();
+      input.select();
+    }
+  }
+
+  // 6. Action Functions (Check-in, Confirm, Chair, Cancel)
+  function confirmAction(id) {
+    const appt = appointmentList.find(i => i.id === id);
+    if (appt) {
+      appt.status = 'da-xac-nhan';
+      appt.statusLabel = 'Đã xác nhận';
+      renderAppointmentTable();
+      showToast(`Đã xác nhận lịch hẹn của ${appt.patientName}!`, 'check_circle');
+    }
+  }
+
+  function checkinAction(id) {
+    const appt = appointmentList.find(i => i.id === id);
+    if (appt) {
+      appt.status = 'da-den';
+      appt.statusLabel = 'Đã đến (Sảnh chờ)';
+      renderAppointmentTable();
+      showToast(`Bệnh nhân ${appt.patientName} đã check-in tại quầy lễ tân!`, 'how_to_reg');
+    }
+  }
+
+  function sendToChairAction(id) {
+    const appt = appointmentList.find(i => i.id === id);
+    if (appt) {
+      appt.status = 'dang-kham';
+      appt.statusLabel = 'Đang khám';
+      appt.chair = 'Ghế 02';
+      renderAppointmentTable();
+      showToast(`Đã điều phối bệnh nhân ${appt.patientName} vào Ghế 02!`, 'airline_seat_flat');
+    }
+  }
+
+  function cancelActionPrompt(id) {
+    const appt = appointmentList.find(i => i.id === id);
+    if (!appt) return;
+    const reason = prompt(`Nhập lý do hủy lịch của ${appt.patientName}:`, 'Bệnh nhân bận việc đột xuất');
+    if (reason !== null) {
+      appt.status = 'da-huy';
+      appt.statusLabel = 'Đã hủy';
+      appt.serviceDesc = 'Hủy: ' + reason;
+      renderAppointmentTable();
+      showToast(`Đã hủy lịch hẹn #${id}`, 'cancel');
+    }
+  }
+
+  function viewAppointmentDetail(id) {
+    const appt = appointmentList.find(i => i.id === id);
+    if (!appt) return;
+    openDetailModal(appt.id, appt.patientName, appt.phone, appt.service, appt.doctor, appt.statusLabel, appt.time, appt.serviceDesc);
+  }
+
+  // 7. Modal Handlers
+  function openAppointmentModal() {
+    const modal = document.getElementById('appointmentModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeAppointmentModal() {
+    const modal = document.getElementById('appointmentModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function openDetailModal(id, name, phone, service, doctor, status, time = '14:00', note = '') {
+    const modal = document.getElementById('detailModal');
+    const content = document.getElementById('detailModalContent');
+    document.getElementById('detailModalTitle').textContent = `Chi Tiết Lịch #${id}`;
+
+    content.innerHTML = `
+      <div class="p-3.5 rounded-lg bg-slate-50 space-y-1">
+        <div class="text-[11px] text-slate-400 font-bold uppercase">BỆNH NHÂN TIẾP ĐÓN</div>
+        <div class="font-bold text-[16px] text-slate-900">${name}</div>
+        <div class="text-primary font-semibold">SĐT: ${phone}</div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="p-2.5 rounded-lg border border-slate-200">
+          <span class="text-[11px] text-slate-400">Thời gian khám:</span>
+          <div class="font-bold text-slate-800">${time} • 31/03/2026</div>
+        </div>
+        <div class="p-2.5 rounded-lg border border-slate-200">
+          <span class="text-[11px] text-slate-400">Trạng thái:</span>
+          <div class="font-bold text-primary">${status}</div>
+        </div>
+      </div>
+      <div class="p-2.5 rounded-lg border border-slate-200 space-y-1">
+        <span class="text-[11px] text-slate-400">Dịch vụ nha khoa:</span>
+        <div class="font-semibold text-slate-900">${service}</div>
+        <span class="text-[11px] text-slate-400">Bác sĩ phụ trách:</span>
+        <div class="font-medium text-slate-800">${doctor}</div>
+      </div>
+      ${note ? `<div class="p-2.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 text-[12px]"><span class="font-bold">Ghi chú lâm sàng:</span> ${note}</div>` : ''}
+    `;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeDetailModal() {
+    const modal = document.getElementById('detailModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function switchPatientTab(type) {
+    const oldBtn = document.getElementById('tabOldBtn');
+    const newBtn = document.getElementById('tabNewBtn');
+    const oldSection = document.getElementById('oldPatientSection');
+    const newSection = document.getElementById('newPatientSection');
+
+    if (type === 'old') {
+      oldBtn.className = "flex-1 py-1.5 rounded-md font-semibold text-primary bg-white shadow-xs text-center transition-all";
+      newBtn.className = "flex-1 py-1.5 rounded-md font-semibold text-slate-500 hover:text-slate-800 text-center transition-all";
+      oldSection.classList.remove('hidden');
+      newSection.classList.add('hidden');
+    } else {
+      newBtn.className = "flex-1 py-1.5 rounded-md font-semibold text-primary bg-white shadow-xs text-center transition-all";
+      oldBtn.className = "flex-1 py-1.5 rounded-md font-semibold text-slate-500 hover:text-slate-800 text-center transition-all";
+      newSection.classList.remove('hidden');
+      oldSection.classList.add('hidden');
+    }
+  }
+
+  function fillMockPatient(name, phone) {
+    document.getElementById('inputSearchOldPatient').value = `${name} - ${phone}`;
+    showToast(`Đã nạp hồ sơ của ${name}`);
+  }
+
+  function quickCheckinWalkin() {
+    openAppointmentModal();
+    switchPatientTab('new');
+  }
+
+  function handleCreateAppointment(e) {
+    e.preventDefault();
+    const isNewTab = !document.getElementById('newPatientSection').classList.contains('hidden');
+    let pName = "";
+    let pPhone = "09xx xxx xxx";
+
+    if (isNewTab) {
+      pName = document.getElementById('newPatientName').value.trim();
+      pPhone = document.getElementById('newPatientPhone').value.trim() || '0918 888 999';
+      if (!pName) {
+        alert("Vui lòng điền họ tên bệnh nhân!");
+        return;
+      }
+    } else {
+      const query = document.getElementById('inputSearchOldPatient').value.trim();
+      pName = query ? query.split('-')[0].trim() : "Bệnh nhân tái khám";
+      pPhone = "0905 123 456";
+    }
+
+    const dateVal = document.getElementById('formApptDate').value;
+    const timeVal = document.getElementById('formApptTime').value;
+    const serviceVal = document.getElementById('formApptService').value;
+    const doctorVal = document.getElementById('formApptDoctor').value;
+    const noteVal = document.getElementById('formApptNote').value.trim();
+
+    // Check doctor conflict
+    const isConflict = appointmentList.some(item => item.date === dateVal && item.time === timeVal && item.doctor === doctorVal && item.status !== 'da-huy');
+    if (isConflict) {
+      if (!confirm(`Cảnh báo xung đột: Bác sĩ ${doctorVal} đã có ca điều trị lúc ${timeVal} ngày ${dateVal}. Bạn có muốn tiếp nhận ca này vào phòng khám song song?`)) {
+        return;
+      }
+    }
+
+    const newId = `LH-2026-${Math.floor(100 + Math.random() * 900)}`;
+    const doctorInit = doctorVal.includes("Tích") ? "NT" : (doctorVal.includes("Mai") ? "NM" : "LP");
+
+    appointmentList.unshift({
+      id: newId,
+      time: timeVal,
+      date: dateVal,
+      patientName: pName,
+      patientMeta: "Tiếp đón mới",
+      phone: pPhone,
+      service: serviceVal,
+      serviceDesc: noteVal || "Đặt lịch trực tiếp tại cổng lễ tân",
+      doctor: doctorVal,
+      doctorInit: doctorInit,
+      status: "da-xac-nhan",
+      statusLabel: "Đã xác nhận",
+      chair: ""
+    });
+
+    closeAppointmentModal();
+    renderAppointmentTable();
+    showToast(`Đã tạo lịch hẹn #${newId} thành công!`, 'calendar_add_on');
+  }
+
+  // 8. Toast Helper
+  function showToast(message, iconName = 'check_circle') {
+    const toast = document.getElementById('toastMessage');
+    const toastText = document.getElementById('toastText');
+    const toastIcon = document.getElementById('toastIcon');
+
+    if (!toast || !toastText) return;
+    toastText.textContent = message;
+    toastIcon.textContent = iconName;
+
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+
+  function confirmLogout() {
+    if (confirm('Xác nhận hoàn thành ca trực và đăng xuất khỏi hệ thống Lễ Tân?')) {
+      showToast('Đang kết thúc ca trực & đăng xuất...', 'logout');
+    }
+  }
+
+  // 9. Accordion Vertical Toggle (Nhóm 2, Nhóm 3, Nhóm 4 độc lập)
+  function toggleAccordion(contentId, chevronId) {
+    const content = document.getElementById(contentId);
+    const chevron = document.getElementById(chevronId);
+    if (!content) return;
+
+    const isHidden = content.classList.toggle('hidden');
+    if (chevron) {
+      chevron.style.transform = isHidden ? 'rotate(-90deg)' : 'rotate(0deg)';
+    }
+
+    try {
+      localStorage.setItem(`nk_accordion_${contentId}`, isHidden ? 'closed' : 'open');
+    } catch(e) {}
+  }
+
+  // 10. Flyout Submenu for Collapsed Sidebar
+  function showFlyoutMenu(groupKey, triggerEl, evt) {
+    evt.stopPropagation();
+    const data = flyoutMenuData[groupKey];
+    if (!data) return;
+
+    const flyout = document.getElementById('flyoutSubmenu');
+    const flyoutHeader = document.getElementById('flyoutHeader');
+    const flyoutItems = document.getElementById('flyoutItems');
+
+    flyoutHeader.textContent = data.title;
+    flyoutItems.innerHTML = data.items.map(item => `
+      <a href="javascript:void(0)" onclick="navigateTo('${item.pageId}')" class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 font-medium transition-colors">
+        <span class="material-symbols-outlined text-[18px] text-primary">${item.icon}</span>
+        <span>${item.label}</span>
+      </a>
+    `).join('');
+
+    const rect = triggerEl.getBoundingClientRect();
+    flyout.style.left = `${rect.right + 10}px`;
+    flyout.style.top = `${rect.top}px`;
+    flyout.classList.remove('hidden');
+  }
+
+  function hideFlyoutMenu() {
+    const flyout = document.getElementById('flyoutSubmenu');
+    if (flyout) flyout.classList.add('hidden');
+  }
+
+  // 11. DOM INITIALIZATION
+  document.addEventListener('DOMContentLoaded', function() {
+    // A. Render initial tables
+    renderAppointmentTable();
+
+    // B. Setup Sidebar Horizontal Toggle Button (#sidebarToggle -> toggles .sidebar-collapsed on .app-layout)
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const appLayout = document.getElementById('appLayout');
+    const sidebarToggleIcon = document.getElementById('sidebarToggleIcon');
+
+    if (sidebarToggle && appLayout) {
+      sidebarToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isCollapsed = appLayout.classList.toggle('sidebar-collapsed');
+        sidebarToggle.setAttribute('aria-expanded', String(!isCollapsed));
+        sidebarToggle.setAttribute('title', isCollapsed ? 'Mở rộng thanh điều hướng' : 'Thu gọn thanh điều hướng');
+        
+        if (sidebarToggleIcon) {
+          sidebarToggleIcon.textContent = isCollapsed ? 'keyboard_double_arrow_right' : 'keyboard_double_arrow_left';
+        }
+        
+        hideFlyoutMenu();
+
+        try {
+          localStorage.setItem('nk_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+        } catch (err) {}
+      });
+
+      // Restore collapsed state from localStorage
+      try {
+        if (localStorage.getItem('nk_sidebar_collapsed') === 'true') {
+          appLayout.classList.add('sidebar-collapsed');
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+          sidebarToggle.setAttribute('title', 'Mở rộng thanh điều hướng');
+          if (sidebarToggleIcon) {
+            sidebarToggleIcon.textContent = 'keyboard_double_arrow_right';
+          }
+        }
+      } catch (err) {}
+    }
+
+    // C. Restore Vertical Accordion States
+    ['group-schedule', 'group-patients', 'group-account'].forEach(id => {
+      try {
+        if (localStorage.getItem(`nk_accordion_${id}`) === 'closed') {
+          const content = document.getElementById(id);
+          const chevronKey = id.replace('group-', 'chevron-');
+          const chevron = document.getElementById(chevronKey);
+          if (content) content.classList.add('hidden');
+          if (chevron) chevron.style.transform = 'rotate(-90deg)';
+        }
+      } catch(e) {}
+    });
+
+    // D. Global Click & Keyboard Listeners (Close flyout & modals on Escape/Click outside)
+    document.addEventListener('click', function(e) {
+      const flyout = document.getElementById('flyoutSubmenu');
+      if (flyout && !flyout.contains(e.target)) {
+        hideFlyoutMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        hideFlyoutMenu();
+        closeAppointmentModal();
+        closeDetailModal();
+      }
+    });
+
+    // E. Restore saved page or default to dashboard
+    try {
+      const savedPage = localStorage.getItem('nk_reception_page');
+      if (savedPage && document.getElementById(savedPage)) {
+        navigateTo(savedPage);
+      }
+    } catch(e) {}
+  });
+</script>
+</body></html>
+
+
