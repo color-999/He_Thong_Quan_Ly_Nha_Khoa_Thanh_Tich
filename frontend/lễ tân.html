@@ -428,7 +428,7 @@
 <option value="da-xac-nhan">Đã xác nhận</option>
 <option value="da-den">Đã đến (Check-in)</option>
 <option value="dang-kham">Đang khám</option>
-<option value="hoan-thanh">Hoàn thành</option>
+<option value="hoan-thanh">Đã khám</option>
 <option value="da-huy">Đã hủy</option>
 </select>
 <select class="h-9 px-3 rounded-lg bg-slate-100/70 border border-slate-200 text-slate-800 text-[12px] font-medium outline-none cursor-pointer" id="doctorFilter" onchange="filterAppointments()">
@@ -1098,7 +1098,7 @@
       doctor: "BS. Nguyễn Thị Mai",
       doctorInit: "NM",
       status: "hoan-thanh",
-      statusLabel: "Hoàn thành",
+      statusLabel: "Đã khám",
       chair: ""
     },
     {
@@ -1246,7 +1246,7 @@
         actionsHtml = `
           <button type="button" onclick="sendToChairAction('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-secondary hover:bg-secondary/90 text-white font-semibold text-[12px] flex items-center gap-1 shadow-xs transition-all">
             <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
-            <span>Vào ghế</span>
+            <span>Đã đến</span>
           </button>
         `;
       } else if (item.status === 'dang-kham') {

@@ -683,6 +683,278 @@
 </div>
 </section>
 <!-- VIEW 7: MẪU HÓA ĐƠN & IN BIÊN LAI (PRINT PREVIEW MODAL/FULLSCREEN) -->
+
+<!-- VIEW: THÔNG TIN TÀI KHOẢN -->
+
+<!-- VIEW: BÁO CÁO SỔ QUỸ CA -->
+<section class="cashier-view hidden flex flex-col space-y-space-lg" id="view-cash-report">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div>
+      <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Báo Cáo Sổ Quỹ Ca</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Tổng hợp thu – chi theo ca, theo ngày và theo tháng từ lịch sử giao dịch bệnh nhân.</p>
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container-highest" onclick="switchView('dashboard')" type="button">
+        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        <span>Về tổng quan</span>
+      </button>
+      <button class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container" onclick="exportCashReport()" type="button">
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        <span>Xuất báo cáo</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="bg-surface-container-lowest rounded-xl shadow-sm p-4 flex flex-wrap items-end gap-4">
+    <div>
+      <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Tháng báo cáo</label>
+      <select id="cashReportMonth" onchange="renderCashReport()" class="h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-primary/20">
+        <option value="2026-05">Tháng 05/2026</option>
+        <option value="2026-04">Tháng 04/2026</option>
+      </select>
+    </div>
+    <div>
+      <label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Ngày trong tháng</label>
+      <select id="cashReportDay" onchange="renderCashReport()" class="h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-primary/20">
+        <option value="ALL">Tất cả các ngày</option>
+      </select>
+    </div>
+    <button type="button" onclick="renderCashReport()" class="h-10 px-4 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high">Làm mới</button>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="font-label-md text-label-md text-on-surface-variant font-medium">Tổng thu</span>
+        <div class="w-9 h-9 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined text-[18px]">trending_up</span>
+        </div>
+      </div>
+      <p class="font-headline-sm text-headline-sm font-bold text-secondary mt-3" id="crKpiThu">0 đ</p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant mt-1" id="crKpiThuCount">0 giao dịch thu</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="font-label-md text-label-md text-on-surface-variant font-medium">Tổng chi (hoàn)</span>
+        <div class="w-9 h-9 rounded-full bg-error-container/50 flex items-center justify-center text-error">
+          <span class="material-symbols-outlined text-[18px]">trending_down</span>
+        </div>
+      </div>
+      <p class="font-headline-sm text-headline-sm font-bold text-error mt-3" id="crKpiChi">0 đ</p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant mt-1" id="crKpiChiCount">0 giao dịch hoàn</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="font-label-md text-label-md text-on-surface-variant font-medium">Thực thu ròng</span>
+        <div class="w-9 h-9 rounded-full bg-primary-fixed/50 flex items-center justify-center text-primary">
+          <span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+        </div>
+      </div>
+      <p class="font-headline-sm text-headline-sm font-bold text-primary mt-3" id="crKpiNet">0 đ</p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Thu − Hoàn trong kỳ</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="font-label-md text-label-md text-on-surface-variant font-medium">Số ngày có GD</span>
+        <div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface">
+          <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+        </div>
+      </div>
+      <p class="font-headline-sm text-headline-sm font-bold text-on-surface mt-3" id="crKpiDays">0</p>
+      <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Ngày có phát sinh giao dịch</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 xl:grid-cols-5 gap-6">
+    <!-- Daily breakdown -->
+    <div class="xl:col-span-3 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+      <div class="px-5 py-4 border-b border-surface-container-high flex items-center justify-between">
+        <h3 class="font-title-md text-title-md font-semibold text-on-surface">Thống kê theo ngày</h3>
+        <span class="font-label-sm text-label-sm text-on-surface-variant" id="crDailySubtitle">—</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+              <th class="py-3 px-4 font-semibold">Ngày</th>
+              <th class="py-3 px-4 font-semibold text-right">Số GD thu</th>
+              <th class="py-3 px-4 font-semibold text-right">Tổng thu</th>
+              <th class="py-3 px-4 font-semibold text-right">Số GD hoàn</th>
+              <th class="py-3 px-4 font-semibold text-right">Tổng hoàn</th>
+              <th class="py-3 px-4 font-semibold text-right">Thực thu</th>
+            </tr>
+          </thead>
+          <tbody id="cashReportDailyBody" class="divide-y divide-surface-container-high/40">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Method breakdown + monthly summary -->
+    <div class="xl:col-span-2 space-y-space-md">
+      <div class="bg-surface-container-lowest rounded-xl shadow-sm p-5">
+        <h3 class="font-title-md text-title-md font-semibold text-on-surface mb-4">Theo phương thức thanh toán</h3>
+        <div class="space-y-3" id="cashReportMethodBody">
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl shadow-sm p-5">
+        <h3 class="font-title-md text-title-md font-semibold text-on-surface mb-4">Tóm tắt tháng</h3>
+        <div class="space-y-3" id="cashReportMonthSummary">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction detail list for selected period -->
+  <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+    <div class="px-5 py-4 border-b border-surface-container-high flex items-center justify-between">
+      <h3 class="font-title-md text-title-md font-semibold text-on-surface">Chi tiết giao dịch trong kỳ</h3>
+      <span class="font-label-sm text-label-sm text-on-surface-variant" id="crDetailCount">0 giao dịch</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead>
+          <tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+            <th class="py-3 px-4 font-semibold">Mã GD</th>
+            <th class="py-3 px-4 font-semibold">Mã HĐ</th>
+            <th class="py-3 px-4 font-semibold">Bệnh nhân</th>
+            <th class="py-3 px-4 font-semibold">Thời gian</th>
+            <th class="py-3 px-4 font-semibold">Phương thức</th>
+            <th class="py-3 px-4 font-semibold text-right">Số tiền</th>
+            <th class="py-3 px-4 font-semibold text-center">Phân loại</th>
+          </tr>
+        </thead>
+        <tbody id="cashReportTxBody" class="divide-y divide-surface-container-high/40">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cashier-view hidden flex flex-col space-y-space-lg" id="view-account">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div>
+      <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Thông Tin Tài Khoản</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Hồ sơ nhân viên đang trực ca tại quầy Thu ngân Tầng 1.</p>
+    </div>
+    <button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-container-highest" onclick="switchView('dashboard')" type="button">
+      <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+      <span>Về tổng quan</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+    <!-- Profile Card -->
+    <div class="xl:col-span-1 bg-surface-container-lowest rounded-xl shadow-sm p-6 flex flex-col items-center text-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-r from-primary to-primary-container"></div>
+      <div class="relative z-10 mt-6 w-24 h-24 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest shadow-md">
+        <span class="material-symbols-outlined text-on-primary text-[48px]">person</span>
+      </div>
+      <h2 class="mt-4 font-headline-sm text-headline-sm font-bold text-on-surface">Võ Minh Trí</h2>
+      <p class="font-label-md text-label-md text-primary font-semibold mt-1">Thu ngân chính</p>
+      <span class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        Đang trực ca
+      </span>
+      <div class="w-full mt-6 pt-5 border-t border-surface-container-high space-y-3 text-left">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+          <div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Mã nhân viên</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">TN-0042</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-[20px]">apartment</span>
+          <div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Đơn vị / Quầy</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Quầy Thu Ngân Tầng 1</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+          <div>
+            <div class="font-label-sm text-label-sm text-on-surface-variant">Ca trực hôm nay</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">08:00 – 17:00 (Ca ngày)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Info -->
+    <div class="xl:col-span-2 space-y-space-md">
+      <div class="bg-surface-container-lowest rounded-xl shadow-sm p-5">
+        <h3 class="font-title-md text-title-md font-semibold text-on-surface mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[22px]">contact_page</span>
+          Thông tin liên hệ &amp; định danh
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Họ và tên đầy đủ</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Võ Minh Trí</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Ngày sinh</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">15/08/1995</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Số điện thoại</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">0905 246 813</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Email công việc</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">minhtri.tn@thanhtich.dental</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">CMND / CCCD</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">049095001234</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Ngày vào làm</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">03/02/2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-surface-container-lowest rounded-xl shadow-sm p-5">
+        <h3 class="font-title-md text-title-md font-semibold text-on-surface mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[22px]">work</span>
+          Thông tin công việc
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Chức danh</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Thu ngân chính</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Phòng ban</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Tài chính – Viện phí</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Quầy làm việc</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Quầy Thu Ngân Tầng 1 – Hòa Khánh</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Quản lý trực tiếp</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Kế toán trưởng – Trần Thị Hương</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Trạng thái tài khoản</div>
+            <div class="font-label-md text-label-md font-semibold text-secondary">Đang hoạt động</div>
+          </div>
+          <div class="p-3.5 rounded-lg bg-surface-container-low">
+            <div class="font-label-sm text-label-sm text-on-surface-variant mb-1">Quyền hạn hệ thống</div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Thu tiền • Hoàn tiền • In biên lai</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="fixed inset-0 z-50 hidden bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" id="receiptModal">
 <div class="bg-surface-container-lowest w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col my-8">
 <!-- Modal Top Actions Bar -->
@@ -969,6 +1241,116 @@ const DEFAULT_CASHIER_DATA = {
       amount: 1200000,
       type: "HOAN",
       cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0908",
+      invoiceId: "HD-2026-077",
+      patientName: "Nguyễn Thị Mai",
+      timestamp: "23/05/2026 16:20",
+      method: "Tiền mặt",
+      amount: 3500000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0907",
+      invoiceId: "HD-2026-076",
+      patientName: "Phạm Văn Đức",
+      timestamp: "23/05/2026 14:05",
+      method: "Chuyển khoản VietQR",
+      amount: 8500000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0906",
+      invoiceId: "HD-2026-075",
+      patientName: "Lê Thị Hoa",
+      timestamp: "23/05/2026 11:30",
+      method: "Thẻ POS",
+      amount: 450000,
+      type: "HOAN",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0905",
+      invoiceId: "HD-2026-074",
+      patientName: "Trần Minh Khang",
+      timestamp: "22/05/2026 15:40",
+      method: "Tiền mặt",
+      amount: 6200000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0904",
+      invoiceId: "HD-2026-073",
+      patientName: "Võ Thanh Hà",
+      timestamp: "22/05/2026 09:15",
+      method: "Chuyển khoản VietQR",
+      amount: 9800000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0903",
+      invoiceId: "HD-2026-072",
+      patientName: "Đặng Quốc Anh",
+      timestamp: "21/05/2026 16:50",
+      method: "Tiền mặt",
+      amount: 1750000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0902",
+      invoiceId: "HD-2026-071",
+      patientName: "Bùi Thị Lan",
+      timestamp: "20/05/2026 10:25",
+      method: "Thẻ POS",
+      amount: 4200000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0901",
+      invoiceId: "HD-2026-070",
+      patientName: "Ngô Văn Phúc",
+      timestamp: "15/05/2026 14:10",
+      method: "Chuyển khoản VietQR",
+      amount: 15600000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0900",
+      invoiceId: "HD-2026-069",
+      patientName: "Lý Thu Trang",
+      timestamp: "10/05/2026 11:00",
+      method: "Tiền mặt",
+      amount: 2800000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0899",
+      invoiceId: "HD-2026-068",
+      patientName: "Huỳnh Gia Bảo",
+      timestamp: "05/05/2026 09:30",
+      method: "Thẻ POS",
+      amount: 7500000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
+    },
+    {
+      id: "GD-0898",
+      invoiceId: "HD-2026-067",
+      patientName: "Cao Thị Nhung",
+      timestamp: "28/04/2026 15:20",
+      method: "Tiền mặt",
+      amount: 3200000,
+      type: "THU",
+      cashier: "Võ Minh Trí"
     }
   ]
 };
@@ -1033,7 +1415,9 @@ function switchView(viewName) {
     'create-invoice': 'tao-hoa-don-moi',
     'payment-counter': 'tiep-nhan-thanh-toan-tai-quay',
     'transactions': 'lich-su-giao-dich',
-    'refunds': 'xu-ly-hoan-tien'
+    'refunds': 'xu-ly-hoan-tien',
+    'account': 'thong-tin-tai-khoan',
+    'cash-report': 'bao-cao-so-quy-ca-truc'
   };
 
   document.querySelectorAll('#app-sidebar nav a').forEach(a => {
@@ -1052,6 +1436,7 @@ function switchView(viewName) {
   if (viewName === 'transactions') renderTransactionsTable();
   if (viewName === 'refunds') renderRefundView();
   if (viewName === 'create-invoice') initCreateInvoiceForm();
+  if (viewName === 'cash-report') renderCashReport();
 }
 
 // Hook sidebar navigation links to views
@@ -1067,7 +1452,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "tiep-nhan-thanh-toan-tai-quay": () => switchView("payment-counter"),
     "lich-su-giao-dich": () => switchView("transactions"),
     "xu-ly-hoan-tien": () => switchView("refunds"),
-    "bao-cao-so-quy-ca-truc": () => switchView("transactions")
+    "bao-cao-so-quy-ca-truc": () => switchView("cash-report"),
+    "thong-tin-tai-khoan": () => switchView("account")
   };
 
   document.querySelectorAll('#app-sidebar nav a').forEach(a => {
@@ -1186,7 +1572,7 @@ function renderDashboard() {
       <td class="py-3 px-4 font-medium text-on-surface">${tx.patientName}</td>
       <td class="py-3 px-4 text-on-surface-variant font-label-sm">${tx.timestamp}</td>
       <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm">${tx.method}</span></td>
-      <td class="py-3 px-4 text-right font-bold isThu?'text-secondary':'text-error'">{isThu ? '+' : '-'}${formatVND(tx.amount)}</td>
+      <td class="py-3 px-4 text-right font-bold ${isThu ? 'text-secondary' : 'text-error'}">${isThu ? '+' : '-'}${formatVND(tx.amount)}</td>
       <td class="py-3 px-4 text-center">
         <span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold ${isThu ? 'bg-secondary-container text-on-secondary-container' : 'bg-error-container text-on-error-container'}">
           ${isThu ? 'Thu viện phí' : 'Hoàn phí'}
@@ -1254,10 +1640,10 @@ function renderInvoiceList() {
     row.innerHTML = `
       <td class="py-3.5 px-4 font-mono font-bold text-primary">${inv.id}</td>
       <td class="py-3.5 px-4 font-mono text-on-surface-variant">${inv.patientCode}</td>
-      <td class="py-3.5 px-4 font-semibold text-on-surface">inv.patientName<spanclass="blockfont-label-smfont-normaltext-on-surface-variant">{inv.phone}</span></td>
+      <td class="py-3.5 px-4 font-semibold text-on-surface">${inv.patientName}<span class="block font-label-sm font-normal text-on-surface-variant">${inv.phone}</span></td>
       <td class="py-3.5 px-4 text-on-surface">${inv.doctor}</td>
       <td class="py-3.5 px-4 text-right font-semibold">${formatVND(inv.totalAmount)}</td>
-      <td class="py-3.5 px-4 text-right font-bold remaining>0?'text-primary':'text-secondary'">{formatVND(remaining)}</td>
+      <td class="py-3.5 px-4 text-right font-bold ${remaining > 0 ? 'text-primary' : 'text-secondary'}">${formatVND(remaining)}</td>
       <td class="py-3.5 px-4 text-center">${statusBadge}</td>
       <td class="py-3.5 px-4 text-center">
         <div class="flex items-center justify-center gap-2">
@@ -1348,14 +1734,14 @@ function renderCreateInvoiceRows() {
     tr.innerHTML = `
       <td class="py-2.5 px-3">
         <select onchange="onServiceRowChange(${idx}, 'name', this.value)" class="w-full h-10 px-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md">
-          ${DENTAL_SERVICES.map(s => `<option value="${s}" s===srv.name?'selected':''>{s}</option>`).join("")}
+          ${DENTAL_SERVICES.map(s => `<option value="${s}" ${s === srv.name ? 'selected' : ''}>${s}</option>`).join("")}
         </select>
       </td>
       <td class="py-2.5 px-3">
-        <input type="number" value="srv.price"onchange="onServiceRowChange({idx}, 'price', this.value)" class="w-full h-10 px-2 text-right rounded-lg bg-surface-container-low font-body-md text-body-md">
+        <input type="number" value="${srv.price}" onchange="onServiceRowChange(${idx}, 'price', this.value)" class="w-full h-10 px-2 text-right rounded-lg bg-surface-container-low font-body-md text-body-md">
       </td>
       <td class="py-2.5 px-3">
-        <input type="number" min="1" value="srv.quantity"onchange="onServiceRowChange({idx}, 'quantity', this.value)" class="w-full h-10 px-1 text-center rounded-lg bg-surface-container-low font-body-md text-body-md">
+        <input type="number" min="1" value="${srv.quantity}" onchange="onServiceRowChange(${idx}, 'quantity', this.value)" class="w-full h-10 px-1 text-center rounded-lg bg-surface-container-low font-body-md text-body-md">
       </td>
       <td class="py-2.5 px-3 text-right font-semibold text-on-surface">
         ${formatVND(lineTotal)}
@@ -1420,7 +1806,7 @@ function saveNewInvoice(initialStatus = "PENDING") {
 
   const newId = "HD-2026-" + String(db.invoices.length + 85).padStart(3, "0");
   const now = new Date();
-  const dateStr = `String(now.getDate()).padStart(2,'0')/{String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} String(now.getHours()).padStart(2,'0'):{String(now.getMinutes()).padStart(2, '0')}`;
+  const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
   const newInvoice = {
     id: newId,
@@ -1557,7 +1943,7 @@ function updateCheckoutDetails() {
     const row = document.createElement("div");
     row.className = "flex justify-between items-center text-label-md py-1 border-b border-surface-container-high/30";
     row.innerHTML = `
-      <span class="text-on-surface font-medium truncate max-w-[220px]">srv.name<spanclass="text-on-surface-variant">x{srv.quantity}</span></span>
+      <span class="text-on-surface font-medium truncate max-w-[220px]">${srv.name} <span class="text-on-surface-variant">x${srv.quantity}</span></span>
       <span class="text-on-surface font-semibold">${formatVND(srv.price * srv.quantity)}</span>
     `;
     itemsContainer.appendChild(row);
@@ -1661,7 +2047,7 @@ function processPaymentExecution() {
 
   // Create Transaction
   const now = new Date();
-  const dateStr = `String(now.getDate()).padStart(2,'0')/{String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} String(now.getHours()).padStart(2,'0'):{String(now.getMinutes()).padStart(2, '0')}`;
+  const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2, '0')}`;
   const newTxId = "GD-0" + (913 + db.transactions.length);
 
   db.transactions.unshift({
@@ -1722,7 +2108,7 @@ function onRefundInvoiceSelected() {
   const alreadyRefunded = inv.refundAmount || 0;
   const maxRefund = Math.max(0, inv.paidAmount - alreadyRefunded);
 
-  document.getElementById("refDetailPatient").textContent = `inv.patientName({inv.phone})`;
+  document.getElementById("refDetailPatient").textContent = `${inv.patientName} (${inv.phone})`;
   document.getElementById("refDetailPaid").textContent = formatVND(inv.paidAmount);
   document.getElementById("refDetailMaxAmount").textContent = formatVND(maxRefund);
   document.getElementById("refundAmountInput").value = maxRefund;
@@ -1763,7 +2149,7 @@ function executeRefundAction() {
 
   // Add Refund Transaction
   const now = new Date();
-  const dateStr = `String(now.getDate()).padStart(2,'0')/{String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} String(now.getHours()).padStart(2,'0'):{String(now.getMinutes()).padStart(2, '0')}`;
+  const dateStr = `${String(now.getDate()).padStart(2,'0')}/${String(now.getMonth()+1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2, '0')}`;
   const newTxId = "GD-0" + (913 + db.transactions.length);
 
   db.transactions.unshift({
@@ -1818,7 +2204,7 @@ function renderTransactionsTable() {
       <td class="py-3.5 px-4 font-semibold text-on-surface">${tx.patientName}</td>
       <td class="py-3.5 px-4 text-on-surface-variant font-label-sm">${tx.timestamp}</td>
       <td class="py-3.5 px-4"><span class="px-2 py-1 rounded bg-surface-container text-label-sm">${tx.method}</span></td>
-      <td class="py-3.5 px-4 text-right font-bold isThu?'text-secondary':'text-error'">{isThu ? '+' : '-'}${formatVND(tx.amount)}</td>
+      <td class="py-3.5 px-4 text-right font-bold ${isThu ? 'text-secondary' : 'text-error'}">${isThu ? '+' : '-'}${formatVND(tx.amount)}</td>
       <td class="py-3.5 px-4 text-center">
         <span class="px-2.5 py-1 rounded-full font-label-sm font-semibold ${isThu ? 'bg-secondary-container text-on-secondary-container' : 'bg-error-container text-on-error-container'}">
           ${isThu ? 'Thu viện phí' : 'Hoàn phí'}
@@ -1834,6 +2220,214 @@ function renderTransactionsTable() {
     tbody.appendChild(row);
   });
 }
+
+
+// ===== CASH REPORT (Sổ quỹ ca) =====
+function parseTxDate(timestamp) {
+  // format: "24/05/2026 08:45"
+  const part = (timestamp || "").split(" ")[0] || "";
+  const segs = part.split("/");
+  if (segs.length !== 3) return null;
+  return { day: segs[0].padStart(2, "0"), month: segs[1].padStart(2, "0"), year: segs[2], key: `${segs[2]}-${segs[1].padStart(2, "0")}-${segs[0].padStart(2, "0")}`, label: part };
+}
+
+function renderCashReport() {
+  const db = getDB();
+  const monthSel = document.getElementById("cashReportMonth");
+  const daySel = document.getElementById("cashReportDay");
+  if (!monthSel || !daySel) return;
+
+  const monthVal = monthSel.value; // YYYY-MM
+  const [y, m] = monthVal.split("-");
+
+  // Build day options from data of this month
+  const monthTx = db.transactions.filter(tx => {
+    const d = parseTxDate(tx.timestamp);
+    return d && d.year === y && d.month === m;
+  });
+
+  const daysSet = {};
+  monthTx.forEach(tx => {
+    const d = parseTxDate(tx.timestamp);
+    if (d) daysSet[d.day] = d.label;
+  });
+  const sortedDays = Object.keys(daysSet).sort((a, b) => Number(b) - Number(a));
+
+  const currentDay = daySel.value;
+  daySel.innerHTML = `<option value="ALL">Tất cả các ngày</option>` + sortedDays.map(d => `<option value="${d}">Ngày ${daysSet[d]}</option>`).join("");
+  if (currentDay !== "ALL" && sortedDays.includes(currentDay)) {
+    daySel.value = currentDay;
+  } else {
+    daySel.value = "ALL";
+  }
+
+  const dayFilter = daySel.value;
+  let filtered = monthTx;
+  if (dayFilter !== "ALL") {
+    filtered = monthTx.filter(tx => {
+      const d = parseTxDate(tx.timestamp);
+      return d && d.day === dayFilter;
+    });
+  }
+
+  // KPIs
+  let totalThu = 0, totalChi = 0, countThu = 0, countChi = 0;
+  filtered.forEach(tx => {
+    if (tx.type === "THU") { totalThu += tx.amount; countThu++; }
+    else if (tx.type === "HOAN") { totalChi += tx.amount; countChi++; }
+  });
+  const net = totalThu - totalChi;
+
+  // Unique days in filtered
+  const uniqueDays = new Set();
+  filtered.forEach(tx => {
+    const d = parseTxDate(tx.timestamp);
+    if (d) uniqueDays.add(d.key);
+  });
+
+  document.getElementById("crKpiThu").textContent = formatVND(totalThu);
+  document.getElementById("crKpiThuCount").textContent = countThu + " giao dịch thu";
+  document.getElementById("crKpiChi").textContent = formatVND(totalChi);
+  document.getElementById("crKpiChiCount").textContent = countChi + " giao dịch hoàn";
+  document.getElementById("crKpiNet").textContent = formatVND(net);
+  document.getElementById("crKpiDays").textContent = String(uniqueDays.size).padStart(2, "0");
+
+  // Daily aggregation (always for whole month for the daily table, unless day filtered)
+  const dailySource = dayFilter === "ALL" ? monthTx : filtered;
+  const dailyMap = {};
+  dailySource.forEach(tx => {
+    const d = parseTxDate(tx.timestamp);
+    if (!d) return;
+    if (!dailyMap[d.key]) {
+      dailyMap[d.key] = { label: d.label, thu: 0, chi: 0, cThu: 0, cChi: 0 };
+    }
+    if (tx.type === "THU") { dailyMap[d.key].thu += tx.amount; dailyMap[d.key].cThu++; }
+    else if (tx.type === "HOAN") { dailyMap[d.key].chi += tx.amount; dailyMap[d.key].cChi++; }
+  });
+  const dailyKeys = Object.keys(dailyMap).sort((a, b) => b.localeCompare(a));
+  document.getElementById("crDailySubtitle").textContent = dayFilter === "ALL" ? `Tháng ${m}/${y}` : `Ngày đã chọn`;
+
+  const dailyBody = document.getElementById("cashReportDailyBody");
+  if (dailyKeys.length === 0) {
+    dailyBody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-on-surface-variant">Không có giao dịch trong kỳ.</td></tr>`;
+  } else {
+    dailyBody.innerHTML = dailyKeys.map(k => {
+      const r = dailyMap[k];
+      return `<tr class="hover:bg-surface-container-low/50 transition-colors">
+        <td class="py-3 px-4 font-semibold text-on-surface">${r.label}</td>
+        <td class="py-3 px-4 text-right text-on-surface-variant">${r.cThu}</td>
+        <td class="py-3 px-4 text-right font-semibold text-secondary">${formatVND(r.thu)}</td>
+        <td class="py-3 px-4 text-right text-on-surface-variant">${r.cChi}</td>
+        <td class="py-3 px-4 text-right font-semibold text-error">${formatVND(r.chi)}</td>
+        <td class="py-3 px-4 text-right font-bold text-primary">${formatVND(r.thu - r.chi)}</td>
+      </tr>`;
+    }).join("");
+  }
+
+  // Method breakdown
+  const methodMap = {};
+  filtered.forEach(tx => {
+    if (tx.type !== "THU") return;
+    const mth = tx.method || "Khác";
+    methodMap[mth] = (methodMap[mth] || 0) + tx.amount;
+  });
+  const methodBody = document.getElementById("cashReportMethodBody");
+  const methodKeys = Object.keys(methodMap);
+  if (methodKeys.length === 0) {
+    methodBody.innerHTML = `<p class="text-on-surface-variant font-label-sm">Chưa có dữ liệu thu.</p>`;
+  } else {
+    const maxM = Math.max(...methodKeys.map(k => methodMap[k]));
+    methodBody.innerHTML = methodKeys.map(k => {
+      const pct = maxM > 0 ? Math.round(methodMap[k] / maxM * 100) : 0;
+      return `<div>
+        <div class="flex justify-between mb-1">
+          <span class="font-label-md text-label-md text-on-surface">${k}</span>
+          <span class="font-label-md text-label-md font-semibold text-on-surface">${formatVND(methodMap[k])}</span>
+        </div>
+        <div class="h-2 rounded-full bg-surface-container overflow-hidden">
+          <div class="h-full rounded-full bg-primary" style="width:${pct}%"></div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  // Month summary
+  const monthSummary = document.getElementById("cashReportMonthSummary");
+  let mThu = 0, mChi = 0, mCThu = 0, mCChi = 0;
+  monthTx.forEach(tx => {
+    if (tx.type === "THU") { mThu += tx.amount; mCThu++; }
+    else if (tx.type === "HOAN") { mChi += tx.amount; mCChi++; }
+  });
+  monthSummary.innerHTML = `
+    <div class="flex justify-between py-2 border-b border-surface-container-high/50">
+      <span class="text-on-surface-variant font-label-md">Tổng thu tháng</span>
+      <span class="font-semibold text-secondary">${formatVND(mThu)}</span>
+    </div>
+    <div class="flex justify-between py-2 border-b border-surface-container-high/50">
+      <span class="text-on-surface-variant font-label-md">Tổng hoàn tháng</span>
+      <span class="font-semibold text-error">${formatVND(mChi)}</span>
+    </div>
+    <div class="flex justify-between py-2 border-b border-surface-container-high/50">
+      <span class="text-on-surface-variant font-label-md">Thực thu tháng</span>
+      <span class="font-bold text-primary">${formatVND(mThu - mChi)}</span>
+    </div>
+    <div class="flex justify-between py-2 border-b border-surface-container-high/50">
+      <span class="text-on-surface-variant font-label-md">Số GD thu / hoàn</span>
+      <span class="font-semibold text-on-surface">${mCThu} / ${mCChi}</span>
+    </div>
+    <div class="flex justify-between py-2">
+      <span class="text-on-surface-variant font-label-md">Số ngày có GD</span>
+      <span class="font-semibold text-on-surface">${Object.keys(daysSet).length} ngày</span>
+    </div>
+  `;
+
+  // Detail transactions
+  const txBody = document.getElementById("cashReportTxBody");
+  document.getElementById("crDetailCount").textContent = filtered.length + " giao dịch";
+  if (filtered.length === 0) {
+    txBody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-on-surface-variant">Không có giao dịch.</td></tr>`;
+  } else {
+    txBody.innerHTML = filtered.map(tx => {
+      const isThu = tx.type === "THU";
+      return `<tr class="hover:bg-surface-container-low/50 transition-colors">
+        <td class="py-3 px-4 font-mono font-bold text-on-surface">${tx.id}</td>
+        <td class="py-3 px-4 font-mono text-primary">${tx.invoiceId}</td>
+        <td class="py-3 px-4 font-medium text-on-surface">${tx.patientName}</td>
+        <td class="py-3 px-4 text-on-surface-variant font-label-sm">${tx.timestamp}</td>
+        <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm">${tx.method}</span></td>
+        <td class="py-3 px-4 text-right font-bold ${isThu ? 'text-secondary' : 'text-error'}">${isThu ? '+' : '-'}${formatVND(tx.amount)}</td>
+        <td class="py-3 px-4 text-center">
+          <span class="px-2.5 py-1 rounded-full font-label-sm font-semibold ${isThu ? 'bg-secondary-container text-on-secondary-container' : 'bg-error-container text-on-error-container'}">
+            ${isThu ? 'Thu viện phí' : 'Hoàn phí'}
+          </span>
+        </td>
+      </tr>`;
+    }).join("");
+  }
+}
+
+function exportCashReport() {
+  const db = getDB();
+  const monthSel = document.getElementById("cashReportMonth");
+  const monthVal = monthSel ? monthSel.value : "2026-05";
+  const [y, m] = monthVal.split("-");
+  const monthTx = db.transactions.filter(tx => {
+    const d = parseTxDate(tx.timestamp);
+    return d && d.year === y && d.month === m;
+  });
+  let csv = "Mã GD,Mã HĐ,Bệnh nhân,Thời gian,Phương thức,Số tiền,Phân loại,Thu ngân\\n";
+  monthTx.forEach(t => {
+    csv += `"${t.id}","${t.invoiceId}","${t.patientName}","${t.timestamp}","${t.method}",${t.amount},"${t.type}","${t.cashier}"\\n`;
+  });
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `Bao_Cao_So_Quy_Ca_${m}_${y}.csv`;
+  a.click();
+  showToast("Xuất báo cáo", "File CSV sổ quỹ ca đã được tải về máy.");
+}
+
 
 function exportTransactionReport() {
   const db = getDB();
